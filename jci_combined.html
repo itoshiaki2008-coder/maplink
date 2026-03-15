@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JCI 航行区域参考図 PDFリンク表</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d1b2a;--bg2:#162234;--bg3:#1e2f44;
+  --accent:#2196f3;--accent2:#64b5f6;--teal:#00bcd4;
+  --green:#26a69a;--amber:#ffa726;--red:#ef5350;
+  --text:#dde6f5;--muted:#7a94b8;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.14);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--text);
+  min-height:100vh;padding:2rem 1rem 4rem;
+  background-image:radial-gradient(ellipse 70% 40% at 50% 0%,rgba(33,150,243,0.1) 0%,transparent 60%)}
+.container{max-width:1200px;margin:0 auto}
+header{text-align:center;margin-bottom:2rem}
+.badge{display:inline-block;font-family:'DM Mono',monospace;font-size:11px;
+  letter-spacing:0.12em;color:var(--teal);background:rgba(0,188,212,0.1);
+  border:1px solid rgba(0,188,212,0.25);border-radius:100px;padding:4px 14px;margin-bottom:0.8rem}
+h1{font-size:clamp(18px,4vw,24px);font-weight:700;color:#fff;margin-bottom:0.3rem}
+header p{font-size:13px;color:var(--muted);line-height:1.7}
+.legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-bottom:1.2rem}
+.legend-item{background:var(--bg2);border:1px solid var(--border2);border-radius:12px;padding:0.8rem 1rem}
+.legend-title{font-size:11px;color:var(--muted);margin-bottom:5px;letter-spacing:0.05em;text-transform:uppercase}
+.legend-body{font-size:12px;color:var(--text);line-height:1.9}
+.code{font-family:'DM Mono',monospace;font-size:11px;background:rgba(255,255,255,0.08);border-radius:4px;padding:1px 5px}
+.toolbar{margin-bottom:1rem}
+.toolbar-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:6px}
+.filter-label{font-size:12px;color:var(--muted);white-space:nowrap;min-width:40px}
+.fbtn{padding:5px 12px;border-radius:100px;border:1px solid var(--border2);
+  background:transparent;color:var(--muted);font-family:'Noto Sans JP',sans-serif;
+  font-size:12px;cursor:pointer;transition:all 0.15s;white-space:nowrap}
+.fbtn:hover{background:rgba(255,255,255,0.06);color:var(--text)}
+.fbtn.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.tbl-wrap{overflow-x:auto;border-radius:14px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;min-width:900px;font-size:13px}
+thead tr{background:var(--bg2)}
+thead th{padding:10px 10px;text-align:center;font-weight:500;color:var(--muted);
+  font-size:11px;letter-spacing:0.05em;border-bottom:1px solid var(--border2);white-space:nowrap}
+thead th.left{text-align:left;padding-left:14px}
+tbody tr{border-bottom:1px solid var(--border);transition:background 0.1s}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover{background:rgba(255,255,255,0.025)}
+td{padding:8px 10px;vertical-align:middle;text-align:center}
+td.left{text-align:left;padding-left:14px}
+.tbadge{display:inline-block;font-size:11px;font-weight:700;
+  padding:3px 9px;border-radius:100px;white-space:nowrap}
+.t01{background:rgba(33,150,243,0.18);color:#90caf9;border:1px solid rgba(33,150,243,0.35)}
+.t02{background:rgba(0,188,212,0.15);color:#80deea;border:1px solid rgba(0,188,212,0.35)}
+.t04{background:rgba(255,167,38,0.15);color:var(--amber);border:1px solid rgba(255,167,38,0.35)}
+.t05{background:rgba(255,167,38,0.06);color:#ffcc80;border:1px solid rgba(255,167,38,0.18)}
+.rbadge{display:inline-block;font-size:11px;padding:2px 7px;border-radius:6px;
+  background:rgba(255,255,255,0.05);color:var(--muted);border:1px solid var(--border2);white-space:nowrap}
+.area-num{font-family:'DM Mono',monospace;font-size:11px;
+  color:var(--muted);background:rgba(255,255,255,0.05);
+  border-radius:4px;padding:2px 6px;white-space:nowrap}
+.pdf-btn{display:inline-flex;align-items:center;justify-content:center;
+  width:54px;height:25px;border-radius:6px;border:1px solid;
+  font-family:'DM Mono',monospace;font-size:11px;font-weight:500;
+  text-decoration:none;transition:all 0.15s;cursor:pointer}
+.pdf-btn.spd{background:rgba(33,150,243,0.1);border-color:rgba(33,150,243,0.28);color:var(--accent2)}
+.pdf-btn.spd:hover{background:rgba(33,150,243,0.28);color:#fff;border-color:var(--accent)}
+.pdf-btn.spd2{background:rgba(0,188,212,0.1);border-color:rgba(0,188,212,0.28);color:#80deea}
+.pdf-btn.spd2:hover{background:rgba(0,188,212,0.28);color:#fff;border-color:var(--teal)}
+.pdf-btn.sail{background:rgba(255,167,38,0.1);border-color:rgba(255,167,38,0.28);color:var(--amber)}
+.pdf-btn.sail:hover{background:rgba(255,167,38,0.28);color:#fff;border-color:var(--amber)}
+.pdf-btn.na{background:transparent;border-color:rgba(255,255,255,0.06);color:rgba(255,255,255,0.12);cursor:default;pointer-events:none}
+.no-data{text-align:center;padding:3rem;color:var(--muted);font-size:14px}
+.note{font-size:12px;color:var(--muted);background:rgba(255,167,38,0.06);
+  border:1px solid rgba(255,167,38,0.18);border-radius:10px;
+  padding:0.6rem 1rem;margin-bottom:1rem;line-height:1.8}
+footer{text-align:center;margin-top:2.5rem;font-size:11px;color:var(--muted);line-height:1.9}
+footer a{color:var(--accent2);text-decoration:none}
+
+/* ===== ビュー切替ボタン ===== */
+.view-switch{display:flex;justify-content:flex-end;margin-bottom:1rem}
+.vsw{display:inline-flex;border:1px solid var(--border2);border-radius:10px;overflow:hidden}
+.vsw button{padding:6px 16px;border:none;background:transparent;color:var(--muted);
+  font-family:'Noto Sans JP',sans-serif;font-size:12px;cursor:pointer;
+  transition:all 0.15s;display:flex;align-items:center;gap:5px}
+.vsw button:not(:last-child){border-right:1px solid var(--border2)}
+.vsw button:hover{background:rgba(255,255,255,0.05);color:var(--text)}
+.vsw button.on{background:var(--accent);color:#fff}
+.vsw button svg{width:13px;height:13px;flex-shrink:0}
+
+/* ===== マップビュー ===== */
+body.map-active{padding:0!important;overflow:hidden}
+.page-map{display:none;position:fixed;inset:0;flex-direction:column;z-index:500;background:var(--bg)}
+.page-map.active{display:flex}
+.map-header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:8px;padding:0.6rem 1.2rem;background:var(--bg2);border-bottom:1px solid var(--border2);flex-shrink:0}
+.map-header-title{font-size:14px;font-weight:700;color:#fff}
+.map-header-sub{font-size:11px;color:var(--muted)}
+.map-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:6px;
+  padding:0.45rem 1.2rem;background:var(--bg2);border-bottom:1px solid var(--border);flex-shrink:0}
+.map-legend{display:flex;flex-wrap:wrap;gap:14px;align-items:center;
+  padding:0.3rem 1.2rem;background:rgba(22,34,52,0.97);
+  border-bottom:1px solid var(--border);flex-shrink:0;font-size:11px}
+.leg{display:flex;align-items:center;gap:5px;color:var(--muted)}
+.leg-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+#leafletMap{flex:1;min-height:0}
+
+/* サイドパネル */
+.map-panel{position:fixed;right:0;top:0;bottom:0;width:300px;
+  background:var(--bg2);border-left:1px solid var(--border2);
+  z-index:2000;transform:translateX(100%);
+  transition:transform 0.25s cubic-bezier(0.4,0,0.2,1);overflow-y:auto;padding:1.2rem}
+.map-panel.open{transform:translateX(0)}
+.map-panel-close{position:absolute;top:10px;right:10px;width:28px;height:28px;
+  border-radius:50%;background:var(--bg3);border:1px solid var(--border2);
+  cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;color:var(--muted)}
+.map-panel-close:hover{color:var(--text)}
+.map-panel-title{font-size:15px;font-weight:700;color:#fff;padding-right:34px;margin-bottom:2px}
+.map-panel-gg{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-bottom:1rem}
+.map-section{font-size:10px;color:var(--muted);letter-spacing:0.07em;text-transform:uppercase;
+  margin:0.8rem 0 0.4rem;border-top:1px solid var(--border);padding-top:0.6rem}
+.map-section:first-of-type{border-top:none;padding-top:0;margin-top:0}
+.pdf-row{display:flex;align-items:center;justify-content:space-between;
+  padding:7px 10px;border-radius:7px;border:1px solid var(--border2);
+  text-decoration:none;color:var(--text);font-size:12px;
+  transition:background 0.1s;margin-bottom:5px}
+.pdf-row:hover{background:var(--bg3)}
+.pdf-row-lbl{color:var(--accent2);font-family:'DM Mono',monospace;font-size:11px}
+.pdf-row-arr{color:var(--muted);font-size:11px}
+.map-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.3);z-index:1999;display:none}
+.map-overlay.show{display:block}
+
+/* Leafletダーク調整 */
+#leafletMap{flex:1;min-height:0}
+.leaflet-container{background:#0a141f}
+.leaflet-control-zoom a{background:var(--bg2)!important;color:var(--text)!important;border-color:var(--border2)!important}
+.leaflet-control-zoom a:hover{background:var(--bg3)!important}
+.leaflet-control-attribution{background:rgba(13,27,42,0.85)!important;color:var(--muted)!important;font-size:10px!important}
+.leaflet-control-attribution a{color:var(--accent2)!important}
+.leaflet-popup-content-wrapper{background:var(--bg2)!important;border:1px solid var(--border2)!important;border-radius:10px!important;box-shadow:0 4px 20px rgba(0,0,0,0.6)!important;color:var(--text)!important}
+.leaflet-popup-tip{background:var(--bg2)!important}
+.leaflet-popup-close-button{color:var(--muted)!important}
+.leaflet-popup-close-button:hover{color:var(--text)!important}
+</style>
+</head>
+<body>
+<div class="container" id="mainContainer">
+
+<header>
+  <div class="badge">JCI — 限定沿海区域 参考図</div>
+  <h1>航行区域参考図 PDFリンク表</h1>
+  <p>PDF番号規則（AB+GG+NN+SSS）に基づき各PDFへ直接リンク ／ 種別・地方でフィルター可能</p>
+</header>
+
+<div class="legend">
+  <div class="legend-item">
+    <div class="legend-title">PDF番号の構造（9桁）</div>
+    <div class="legend-body">
+      <span class="code">AB</span>+<span class="code">GG</span>+<span class="code">NN</span>+<span class="code">SSS</span><br>
+      AB=種別　GG=グループ　NN=区域番号　SSS=速力
+    </div>
+  </div>
+  <div class="legend-item">
+    <div class="legend-title">先頭2桁（AB）種別</div>
+    <div class="legend-body">
+      <span class="code">01</span> 汽船・5海里超<br>
+      <span class="code">02</span> 汽船・5海里以内<br>
+      <span class="code">04</span> 帆船・12海里<br>
+      <span class="code">05</span> 帆船・5海里
+    </div>
+  </div>
+  <div class="legend-item">
+    <div class="legend-title">末尾3桁（SSS）速力</div>
+    <div class="legend-body">
+      汽船：<span class="code">005</span><span class="code">010</span><span class="code">015</span><span class="code">020</span><span class="code">025</span><span class="code">030</span><br>
+      帆船：<span class="code">099</span> 固定
+    </div>
+  </div>
+  <div class="legend-item">
+    <div class="legend-title">確認済みGGコード</div>
+    <div class="legend-body">
+      <span class="code">99</span>平水 <span class="code">00</span>北海道<br>
+      <span class="code">10〜12</span>東北 <span class="code">20</span>新潟<br>
+      <span class="code">30〜35</span>関東 <span class="code">41〜44</span>中部<br>
+      <span class="code">51〜60</span>近畿 <span class="code">72〜80</span>中国四国<br>
+      <span class="code">90〜96</span>九州沖縄
+    </div>
+  </div>
+</div>
+
+<div class="note">⚠️ 広島・岡山は平水区域（第8号）のみ。大阪・神戸・島根のGGコードは調査中です。PDFが開かない場合はその区域が存在しない可能性があります。</div>
+
+<div class="view-switch">
+  <div class="vsw">
+    <button id="btnTbl" class="on" onclick="switchView('table')">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="14" height="10" rx="1.5"/><path d="M1 6h14M5 6v7"/></svg>一覧表
+    </button>
+    <button id="btnMap" onclick="switchView('map')">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 13l4-8 4 4 4-6"/><circle cx="6" cy="8" r="1.2" fill="currentColor" stroke="none"/></svg>マップ
+    </button>
+  </div>
+</div>
+
+<div class="toolbar">
+  <div class="toolbar-row" id="typeRow">
+    <span class="filter-label">種別：</span>
+    <button class="fbtn on" onclick="setF('type','all',this)">すべて</button>
+    <button class="fbtn" onclick="setF('type','kisen',this)">汽船</button>
+    <button class="fbtn" onclick="setF('type','hansen',this)">帆船</button>
+  </div>
+  <div class="toolbar-row" id="regionRow">
+    <span class="filter-label">地方：</span>
+    <button class="fbtn on" onclick="setF('region','all',this)">すべて</button>
+    <button class="fbtn" onclick="setF('region','平水',this)">平水</button>
+    <button class="fbtn" onclick="setF('region','北海道',this)">北海道</button>
+    <button class="fbtn" onclick="setF('region','東北',this)">東北</button>
+    <button class="fbtn" onclick="setF('region','北陸信越',this)">北陸信越</button>
+    <button class="fbtn" onclick="setF('region','関東',this)">関東</button>
+    <button class="fbtn" onclick="setF('region','中部',this)">中部</button>
+    <button class="fbtn" onclick="setF('region','近畿',this)">近畿</button>
+    <button class="fbtn" onclick="setF('region','中国',this)">中国</button>
+    <button class="fbtn" onclick="setF('region','四国',this)">四国</button>
+    <button class="fbtn" onclick="setF('region','九州',this)">九州</button>
+    <button class="fbtn" onclick="setF('region','沖縄',this)">沖縄</button>
+  </div>
+</div>
+
+<div class="tbl-wrap">
+<table>
+<thead>
+<tr>
+  <th class="left">種別</th>
+  <th class="left">地方</th>
+  <th class="left">GG-NN / 説明</th>
+  <th>5ノット<br><small style="font-weight:400;color:#546e7a">005</small></th>
+  <th>10ノット<br><small style="font-weight:400;color:#546e7a">010</small></th>
+  <th>15ノット<br><small style="font-weight:400;color:#546e7a">015</small></th>
+  <th>20ノット<br><small style="font-weight:400;color:#546e7a">020</small></th>
+  <th>25ノット<br><small style="font-weight:400;color:#546e7a">025</small></th>
+  <th>30ノット<br><small style="font-weight:400;color:#546e7a">030</small></th>
+  <th>帆船<br><small style="font-weight:400;color:#546e7a">099</small></th>
+</tr>
+</thead>
+<tbody id="tbody"></tbody>
+</table>
+</div>
+<div class="no-data" id="noData" style="display:none">該当する行がありません</div>
+
+</div>
+
+<footer id="mainFooter">
+  JCI（日本小型船舶検査機構）航行区域参考図PDFリンク集 ／
+  公式：<a href="https://jci.go.jp/areamap/genteienkai.html#kounyuu" target="_blank">jci.go.jp/areamap/genteienkai.html</a>
+</footer>
+
+<!-- ===== マップビュー ===== -->
+<div class="page-map" id="pageMap">
+  <div class="map-header">
+    <div>
+      <div class="map-header-title">航行区域マップ</div>
+      <div class="map-header-sub">国土地理院白地図 ／ ポイントをクリックしてPDF取得</div>
+    </div>
+    <div class="vsw">
+      <button onclick="switchView('table')">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" style="width:13px;height:13px"><rect x="1" y="3" width="14" height="10" rx="1.5"/><path d="M1 6h14M5 6v7"/></svg>一覧表
+      </button>
+      <button class="on" onclick="switchView('map')">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" style="width:13px;height:13px"><path d="M2 13l4-8 4 4 4-6"/><circle cx="6" cy="8" r="1.2" fill="currentColor" stroke="none"/></svg>マップ
+      </button>
+    </div>
+  </div>
+  <div class="map-toolbar">
+    <span class="filter-label">種別：</span>
+    <button class="fbtn on" onclick="setMF('type','all',this)">すべて</button>
+    <button class="fbtn" onclick="setMF('type','kisen',this)">汽船</button>
+    <button class="fbtn" onclick="setMF('type','hansen',this)">帆船</button>
+    <span class="filter-label" style="margin-left:8px">地方：</span>
+    <button class="fbtn on" onclick="setMF('region','all',this)">すべて</button>
+    <button class="fbtn" onclick="setMF('region','平水',this)">平水</button>
+    <button class="fbtn" onclick="setMF('region','北海道',this)">北海道</button>
+    <button class="fbtn" onclick="setMF('region','東北',this)">東北</button>
+    <button class="fbtn" onclick="setMF('region','北陸信越',this)">北陸信越</button>
+    <button class="fbtn" onclick="setMF('region','関東',this)">関東</button>
+    <button class="fbtn" onclick="setMF('region','中部',this)">中部</button>
+    <button class="fbtn" onclick="setMF('region','近畿',this)">近畿</button>
+    <button class="fbtn" onclick="setMF('region','中国',this)">中国</button>
+    <button class="fbtn" onclick="setMF('region','四国',this)">四国</button>
+    <button class="fbtn" onclick="setMF('region','九州',this)">九州</button>
+    <button class="fbtn" onclick="setMF('region','沖縄',this)">沖縄</button>
+  </div>
+  <div class="map-legend">
+    <span class="leg"><span class="leg-dot" style="background:#00acc1"></span>平水（汽船+帆船）</span>
+    <span class="leg"><span class="leg-dot" style="background:#2196f3"></span>汽船専用</span>
+    <span class="leg"><span class="leg-dot" style="background:#7b1fa2"></span>汽船+帆船</span>
+    <span class="leg"><span class="leg-dot" style="background:#ff8f00"></span>帆船専用</span>
+  </div>
+  <div id="svgMapWrap" style="flex:1;min-height:0;position:relative;overflow:hidden;cursor:grab;display:none"></div>
+  <div id="leafletMap" style="flex:1;min-height:0"></div>
+</div>
+
+<div class="map-overlay" id="mapOverlay" onclick="closeMapPanel()"></div>
+<div class="map-panel" id="mapPanel">
+  <div class="map-panel-close" onclick="closeMapPanel()">×</div>
+  <div class="map-panel-title" id="mpTitle"></div>
+  <div class="map-panel-gg" id="mpGg"></div>
+  <div id="mpContent"></div>
+</div>
+
+<script>
+var B='https://jci.go.jp/areamap/pdf/';
+
+/* データ: [地方, GG, NN, h01, h02, h04, h05, 説明] */
+var D=[];
+
+/* ===== 北海道 ===== */
+/* ===== 全国共通 GG=99 第1〜49号 ===== */
+D.push(['平水','99','01',true,true,true,true,false,'第１号（東京湾）']);
+D.push(['平水','99','02',true,true,true,true,false,'第２号（駿河湾）']);
+D.push(['平水','99','03',true,true,true,true,false,'第３号（伊勢湾・三河湾）']);
+D.push(['平水','99','04',true,true,true,true,false,'第４号（的矢湾）']);
+D.push(['平水','99','05',true,true,true,true,false,'第５号（英虞湾）']);
+D.push(['平水','99','06',true,true,true,true,false,'第６号（那智勝浦町）']);
+D.push(['平水','99','07',true,true,true,true,false,'第７号（大阪湾）']);
+D.push(['平水','99','08',true,true,true,true,false,'第８号（瀬戸内海）']);
+D.push(['平水','99','10',true,true,true,true,false,'第１０号（関門海峡）']);
+D.push(['平水','99','11',true,true,true,true,false,'第１１号（宇和島市）']);
+D.push(['平水','99','12',true,true,true,true,false,'第１２号（別府湾）']);
+D.push(['平水','99','13',true,true,true,true,false,'第１３号（鹿児島湾）']);
+D.push(['平水','99','14',true,true,true,true,false,'第１４号（瀬戸内町）']);
+D.push(['平水','99','15',true,true,true,true,false,'第１５号（中城湾）']);
+D.push(['平水','99','16',true,true,true,true,false,'第１６号（本部町）']);
+D.push(['平水','99','17',true,true,true,true,false,'第１７号（羽地内海）']);
+D.push(['平水','99','18',true,true,true,true,false,'第１８号（慶良間）']);
+D.push(['平水','99','19',true,true,true,true,false,'第１９号（宮古島）']);
+D.push(['平水','99','20',true,true,true,true,false,'第２０号（石垣島）']);
+D.push(['平水','99','21',true,true,true,true,false,'第２１号（西表島）']);
+D.push(['平水','99','22',true,true,true,true,false,'第２２号（有明海）']);
+D.push(['平水','99','23',true,true,true,true,false,'第２３号（長崎湾）']);
+D.push(['平水','99','24',true,true,true,true,false,'第２４号（佐世保湾）']);
+D.push(['平水','99','24',true,true,true,true,false,'第２４の２号（五島中通島）']);
+D.push(['平水','99','25',true,true,true,true,false,'第２５号（対馬）']);
+D.push(['平水','99','26',true,true,true,true,false,'第２６号（伊万里市）']);
+D.push(['平水','99','27',true,true,true,true,false,'第２７号（唐津湾）']);
+D.push(['平水','99','28',true,true,true,true,false,'第２８号（博多湾）']);
+D.push(['平水','99','29',true,true,true,true,false,'第２９号（油谷湾）']);
+D.push(['平水','99','30',true,true,true,true,false,'第３０号（仙崎湾、深川湾）']);
+D.push(['平水','99','31',true,true,true,true,false,'第３１号（隠岐島前）']);
+D.push(['平水','99','32',true,true,true,true,false,'第３２号（境港市）']);
+D.push(['平水','99','33',true,true,true,true,false,'第３３号（舞鶴湾）']);
+D.push(['平水','99','34',true,true,true,true,false,'第３４号（小浜湾）']);
+D.push(['平水','99','35',true,true,true,true,false,'第３５号（敦賀湾）']);
+D.push(['平水','99','36',true,true,true,true,false,'第３６号（富山湾）']);
+D.push(['平水','99','37',true,true,true,true,false,'第３７号（陸奥湾）']);
+D.push(['平水','99','38',true,true,true,true,false,'第３８号（函館市）']);
+D.push(['平水','99','39',true,true,true,true,false,'第３９号（寿都湾）']);
+D.push(['平水','99','40',true,true,true,true,false,'第４０号（小樽市）']);
+D.push(['平水','99','40',true,true,true,true,false,'第４０の２号（別海町）']);
+D.push(['平水','99','41',true,true,true,true,false,'第４１号（厚岸町）']);
+D.push(['平水','99','42',true,true,true,true,false,'第４２号（宮古市）']);
+D.push(['平水','99','43',true,true,true,true,false,'第４３号（山田町）']);
+D.push(['平水','99','44',true,true,true,true,false,'第４４号（大槌町）']);
+D.push(['平水','99','45',true,true,true,true,false,'第４５号（釜石市）']);
+D.push(['平水','99','46',true,true,true,true,false,'第４６号（大船渡市）']);
+D.push(['平水','99','47',true,true,true,true,false,'第４７号（気仙沼市）']);
+D.push(['平水','99','48',true,true,true,true,false,'第４８号（女川町）']);
+D.push(['平水','99','48',true,true,true,true,false,'第４８の２号（石巻市）']);
+D.push(['平水','99','49',true,true,true,true,false,'第４９号（松島湾）']);
+
+
+D.push(['北海道','00','01',true,false,true,false,false,'北海道石狩市（厚田区）']);
+D.push(['北海道','00','05',true,false,true,true,false,'北海道石狩市']);
+D.push(['北海道','00','48',true,false,true,true,false,'北海道石狩市（浜益区）']);
+D.push(['北海道','00','02',true,false,true,true,false,'北海道網走市']);
+D.push(['北海道','00','11',true,false,false,false,false,'北海道雄武町']);
+D.push(['北海道','00','12',true,false,false,true,false,'北海道興部町']);
+D.push(['北海道','00','19',true,false,false,false,false,'北海道佐呂間町']);
+D.push(['北海道','00','24',true,false,false,false,false,'北海道斜里町']);
+D.push(['北海道','00','25',true,false,true,true,false,'北海道斜里町（ウトロ）']);
+D.push(['北海道','00','26',true,false,false,false,false,'北海道斜里町（知布泊）']);
+D.push(['北海道','00','34',true,false,false,false,false,'北海道北見市（常呂）']);
+D.push(['北海道','00','58',true,false,true,true,false,'北海道紋別市']);
+D.push(['北海道','00','60',true,false,false,false,false,'北海道湧別町']);
+D.push(['北海道','00','03',true,false,false,false,false,'北海道厚真町']);
+D.push(['北海道','00','28',true,false,true,true,false,'北海道白老町']);
+D.push(['北海道','00','32',true,false,true,true,false,'北海道伊達市']);
+D.push(['北海道','00','35',true,false,true,true,false,'北海道苫小牧市']);
+D.push(['北海道','00','43',true,false,true,true,false,'北海道登別市']);
+D.push(['北海道','00','56',true,false,false,false,false,'北海道むかわ町（鵡川）']);
+D.push(['北海道','00','57',true,false,true,true,false,'北海道室蘭市']);
+D.push(['北海道','02','22',true,false,true,true,false,'北海道豊浦町']);
+D.push(['北海道','00','06',true,false,true,true,false,'北海道岩内町']);
+D.push(['北海道','00','14',true,false,true,true,false,'北海道神恵内村']);
+D.push(['北海道','00','22',true,false,true,true,false,'北海道積丹町（美国）']);
+D.push(['北海道','00','23',true,false,true,true,false,'北海道積丹町（余別）']);
+D.push(['北海道','00','52',true,false,true,true,false,'北海道古平町']);
+D.push(['北海道','00','61',true,false,true,true,false,'北海道余市町']);
+D.push(['北海道','02','14',true,false,true,true,false,'北海道島牧村（原歌）']);
+D.push(['北海道','02','15',true,false,false,false,false,'北海道島牧村（本目）']);
+D.push(['北海道','00','07',true,false,true,true,false,'北海道浦河町']);
+D.push(['北海道','00','09',true,false,true,true,false,'北海道えりも町']);
+D.push(['北海道','00','17',true,false,false,false,false,'北海道様似町']);
+D.push(['北海道','00','20',true,false,true,true,false,'北海道新ひだか町（静内）']);
+D.push(['北海道','00','38',true,false,false,false,false,'北海道新冠町']);
+D.push(['北海道','00','50',true,false,false,false,false,'北海道新ひだか町（東静内）']);
+D.push(['北海道','00','55',true,false,false,false,false,'北海道新ひだか町（三石）']);
+D.push(['北海道','00','59',true,false,true,true,false,'北海道日高町（門別）']);
+D.push(['北海道','00','69',true,false,false,false,false,'北海道えりも町（庶野）']);
+D.push(['北海道','00','08',true,false,false,false,false,'北海道枝幸町']);
+D.push(['北海道','00','18',true,false,false,false,false,'北海道猿払村']);
+D.push(['北海道','00','30',true,false,true,true,false,'北海道稚内市（宗谷）']);
+D.push(['北海道','00','46',true,false,true,true,false,'北海道浜頓別町（頓別）']);
+D.push(['北海道','00','49',true,false,false,false,false,'北海道稚内市（抜海）']);
+D.push(['北海道','00','64',true,false,true,true,false,'北海道利尻島（鴛泊）']);
+D.push(['北海道','00','65',true,false,true,true,false,'北海道利尻島（鬼脇）']);
+D.push(['北海道','00','67',true,false,true,true,false,'北海道礼文島']);
+D.push(['北海道','00','68',true,false,true,true,false,'北海道稚内市']);
+D.push(['北海道','00','10',true,false,true,true,false,'北海道遠別町']);
+D.push(['北海道','00','13',true,false,false,false,false,'北海道小平町（臼谷）']);
+D.push(['北海道','00','27',true,false,true,true,false,'北海道初山別村']);
+D.push(['北海道','00','33',true,false,true,true,false,'北海道天塩町']);
+D.push(['北海道','00','36',true,false,false,false,false,'北海道苫前町']);
+D.push(['北海道','00','44',true,false,true,true,false,'北海道羽幌町']);
+D.push(['北海道','00','45',true,false,true,true,false,'北海道羽幌町（天売島、焼尻島）']);
+D.push(['北海道','00','54',true,false,true,true,false,'北海道増毛町']);
+D.push(['北海道','00','66',true,false,true,true,false,'北海道留萌市']);
+D.push(['北海道','00','15',true,false,true,true,false,'北海道釧路市']);
+D.push(['北海道','00','16',true,false,false,false,false,'北海道釧路町（昆布森）']);
+D.push(['北海道','00','29',true,false,false,false,false,'北海道白糠町']);
+D.push(['北海道','00','47',true,false,true,true,false,'北海道浜中町']);
+D.push(['北海道','00','21',true,false,false,false,false,'北海道標津町']);
+D.push(['北海道','00','39',true,false,true,true,false,'北海道根室市']);
+D.push(['北海道','00','40',true,false,false,false,false,'北海道根室市（落石）']);
+D.push(['北海道','00','41',true,false,true,true,false,'北海道根室市（花咲）']);
+D.push(['北海道','00','42',true,false,false,false,false,'北海道根室市（歯舞）']);
+D.push(['北海道','00','62',true,false,true,true,false,'北海道羅臼町']);
+D.push(['北海道','00','70',true,false,false,false,false,'北海道羅臼町（相泊）']);
+D.push(['北海道','00','31',true,false,false,false,false,'北海道大樹町']);
+D.push(['北海道','00','37',true,false,true,true,false,'北海道豊頃町（大津）']);
+D.push(['北海道','00','51',true,false,true,true,false,'北海道広尾町']);
+D.push(['北海道','02','01',true,false,true,true,false,'北海道江差町']);
+D.push(['北海道','02','02',true,false,false,false,false,'北海道奥尻町（青苗）']);
+D.push(['北海道','02','03',true,false,true,true,false,'北海道奥尻町（奥尻）']);
+D.push(['北海道','02','05',true,false,false,false,false,'北海道乙部町']);
+D.push(['北海道','02','06',true,false,false,false,false,'北海道上ノ国町']);
+D.push(['北海道','02','07',true,false,false,false,false,'北海道上ノ国町（石崎）']);
+D.push(['北海道','02','08',true,false,false,false,false,'北海道上ノ国町（小砂子）']);
+D.push(['北海道','02','09',true,false,false,false,false,'北海道せたな町（鵜泊）']);
+D.push(['北海道','02','10',true,false,true,true,false,'北海道八雲町（熊石）']);
+D.push(['北海道','02','11',true,false,false,false,false,'北海道八雲町（相沼）']);
+D.push(['北海道','02','17',true,false,true,true,false,'北海道せたな町']);
+D.push(['北海道','02','18',true,false,false,false,false,'北海道せたな町（須築）']);
+D.push(['北海道','02','19',true,false,true,true,false,'北海道せたな町（久遠）']);
+D.push(['北海道','02','04',true,false,false,false,false,'北海道長万部町']);
+D.push(['北海道','02','12',true,false,true,true,false,'北海道森町（砂原）']);
+D.push(['北海道','02','13',true,false,false,false,false,'北海道鹿部町']);
+D.push(['北海道','02','16',true,false,true,true,false,'北海道知内町']);
+D.push(['北海道','02','20',true,false,false,false,false,'北海道函館市（汐首）']);
+D.push(['北海道','02','21',true,false,true,true,false,'北海道函館市（新浜）']);
+D.push(['北海道','02','23',true,false,true,true,false,'北海道福島町']);
+D.push(['北海道','02','24',true,false,true,true,false,'北海道松前町']);
+D.push(['北海道','02','25',true,false,false,false,false,'北海道松前町（清部）']);
+D.push(['北海道','02','26',true,false,true,true,false,'北海道函館市（川汲）']);
+D.push(['北海道','02','27',true,false,true,true,false,'北海道森町']);
+D.push(['北海道','02','28',true,false,false,false,false,'北海道八雲町']);
+D.push(['北海道','02','29',true,false,false,false,false,'北海道八雲町（落部）']);
+D.push(['北海道','02','30',true,false,false,false,false,'北海道木古内町']);
+D.push(['北海道','02','31',true,false,false,false,false,'北海道長万部町（国縫）']);
+D.push(['北海道','02','32',true,false,false,false,false,'北海道長万部町（静狩）']);
+
+/* ===== 東北 ===== */
+D.push(['東北','12','01',true,false,true,true,false,'青森県鰺ヶ沢町']);
+D.push(['東北','12','02',true,false,false,false,false,'青森県今別町']);
+D.push(['東北','12','03',true,false,false,false,false,'青森県深浦町(岩崎)']);
+D.push(['東北','12','04',true,false,false,false,false,'青森県むつ市(大畑)']);
+D.push(['東北','12','05',true,false,false,false,false,'青森県大間町']);
+D.push(['東北','12','06',true,false,false,false,false,'青森県中泊町(小泊)']);
+D.push(['東北','12','07',true,false,false,false,false,'青森県佐井村']);
+D.push(['東北','12','08',true,false,false,false,false,'青森県五所川原市(市浦)']);
+D.push(['東北','12','09',true,false,false,false,false,'青森県つがる市(車力)']);
+D.push(['東北','12','11',true,false,false,false,false,'青森県階上町']);
+D.push(['東北','12','12',true,false,true,true,false,'青森県八戸市']);
+D.push(['東北','12','13',true,false,false,false,false,'青森県東通村（岩屋）']);
+D.push(['東北','12','14',true,false,false,false,false,'青森県東通村（尻労）']);
+D.push(['東北','12','15',true,false,true,true,false,'青森県東通村（白糠）']);
+D.push(['東北','12','16',true,false,false,false,false,'青森県深浦町（風合瀬）']);
+D.push(['東北','12','17',true,false,false,false,false,'青森県深浦町（北金ヶ沢）']);
+D.push(['東北','12','18',true,false,false,false,false,'青森県深浦町（艫作）']);
+D.push(['東北','12','19',true,false,false,false,false,'青森県三沢市']);
+D.push(['東北','12','20',true,false,true,true,false,'青森県外ヶ浜町(三廐)']);
+D.push(['東北','12','21',true,false,false,false,false,'青森県六ケ所村']);
+D.push(['東北','10','01',true,false,false,false,false,'岩手県岩泉町']);
+D.push(['東北','10','02',true,false,true,true,false,'岩手県久慈市']);
+D.push(['東北','10','03',true,false,false,false,false,'岩手県大船渡市（三陸町越喜来）']);
+D.push(['東北','10','04',true,false,false,false,false,'岩手県大船渡市（三陸町吉浜）']);
+D.push(['東北','10','05',true,false,false,false,false,'岩手県大船渡市（三陸町綾里）']);
+D.push(['東北','10','06',true,false,true,true,false,'岩手県洋野町']);
+D.push(['東北','10','07',true,false,false,false,false,'岩手県田野畑村']);
+D.push(['東北','10','08',true,false,false,false,false,'岩手県宮古市（田老）']);
+D.push(['東北','10','09',true,false,false,false,false,'岩手県野田村']);
+D.push(['東北','10','10',true,false,false,false,false,'岩手県普代村']);
+D.push(['東北','10','11',true,false,false,false,false,'岩手県陸前高田市']);
+D.push(['東北','10','19',true,false,true,true,false,'宮城県石巻市潮見町']);
+D.push(['東北','10','20',true,false,false,false,false,'宮城県南三陸町歌津']);
+D.push(['東北','10','21',true,false,false,false,false,'宮城県石巻市鮎川']);
+D.push(['東北','10','22',true,false,false,false,false,'宮城県石巻市北上町']);
+D.push(['東北','10','23',true,false,false,false,false,'宮城県南三陸町志津川']);
+D.push(['東北','10','24',true,false,false,false,false,'宮城県名取市']);
+D.push(['東北','10','25',true,false,false,false,false,'宮城県気仙沼市（本吉）']);
+D.push(['東北','10','26',true,false,false,false,false,'宮城県亘理町']);
+D.push(['東北','10','13',true,false,false,false,false,'福島県いわき市（四倉）']);
+D.push(['東北','10','14',true,false,true,true,false,'福島県いわき市（小名浜）']);
+D.push(['東北','10','15',true,false,false,false,false,'福島県いわき市（勿来）']);
+D.push(['東北','10','16',true,false,false,false,false,'福島県新地町']);
+D.push(['東北','10','17',true,false,true,true,false,'福島県相馬市']);
+D.push(['東北','10','18',true,false,false,false,false,'福島県浪江町']);
+D.push(['東北','11','01',true,false,true,true,false,'秋田県秋田市']);
+D.push(['東北','11','02',true,false,false,false,false,'秋田県秋田市（雄物川）']);
+D.push(['東北','11','03',true,false,false,false,false,'秋田県由利本荘市（岩城）']);
+D.push(['東北','11','04',true,false,false,false,false,'秋田県男鹿市（北浦）']);
+D.push(['東北','11','05',true,false,false,false,false,'秋田県男鹿市（戸賀）']);
+D.push(['東北','11','06',true,false,false,false,false,'秋田県男鹿市（畠）']);
+D.push(['東北','11','07',true,false,false,false,false,'秋田県男鹿市（船川）']);
+D.push(['東北','11','08',true,false,false,false,false,'秋田県にかほ市（象潟）']);
+D.push(['東北','11','09',true,false,false,false,false,'秋田県にかほ市（金浦）']);
+D.push(['東北','11','10',true,false,false,false,false,'秋田県潟上市']);
+D.push(['東北','11','11',true,false,false,false,false,'秋田県にかほ市（平沢）']);
+D.push(['東北','11','12',true,false,true,true,false,'秋田県能代市']);
+D.push(['東北','11','13',true,false,false,false,false,'秋田県八峰町']);
+D.push(['東北','11','14',true,false,false,false,false,'秋田県三種町']);
+D.push(['東北','11','15',true,false,true,true,false,'秋田県由利本荘市']);
+D.push(['東北','11','16',true,false,false,false,false,'秋田県男鹿市（若美）']);
+D.push(['東北','11','17',true,false,false,false,false,'山形県鶴岡市（温海）']);
+D.push(['東北','11','18',true,false,true,true,false,'山形県鶴岡市（鼠ヶ関）']);
+D.push(['東北','11','19',true,false,true,true,false,'山形県酒田市']);
+D.push(['東北','11','21',true,false,false,false,false,'山形県鶴岡市（堅苔沢）']);
+D.push(['東北','11','22',true,false,true,true,false,'山形県鶴岡市（加茂）']);
+D.push(['東北','11','23',true,false,true,true,false,'山形県鶴岡市（由良）']);
+D.push(['東北','11','24',true,false,true,true,false,'山形県遊佐町']);
+
+/* ===== 北陸信越 ===== */
+D.push(['北陸信越','20','01',true,false,false,false,false,'新潟県佐渡市(姫津)']);
+D.push(['北陸信越','20','02',true,false,false,false,false,'新潟県粟島浦村']);
+D.push(['北陸信越','20','03',true,false,true,true,false,'新潟県出雲崎町']);
+D.push(['北陸信越','20','04',true,false,true,false,false,'新潟県糸魚川市']);
+D.push(['北陸信越','20','05',true,false,true,true,false,'新潟県新潟市(岩室)']);
+D.push(['北陸信越','20','06',true,false,false,false,false,'新潟県糸魚川市(青海)']);
+D.push(['北陸信越','20','07',true,false,false,false,false,'新潟県佐渡市(小木)']);
+D.push(['北陸信越','20','08',true,false,false,false,false,'新潟県上越市(柿崎区)']);
+D.push(['北陸信越','20','09',true,false,true,true,false,'新潟県柏崎市']);
+D.push(['北陸信越','20','10',true,false,false,false,false,'新潟県村上市(寝屋）']);
+D.push(['北陸信越','20','11',true,false,true,true,false,'新潟県新発田市']);
+D.push(['北陸信越','20','12',true,false,true,true,false,'新潟県上越市']);
+D.push(['北陸信越','20','13',true,false,true,true,false,'新潟県長岡市（寺泊）']);
+D.push(['北陸信越','20','15',true,false,true,true,false,'新潟県新潟市（新川）']);
+D.push(['北陸信越','20','16',true,false,true,true,false,'新潟県新潟港（西港区）']);
+D.push(['北陸信越','20','17',true,false,false,false,false,'新潟県新潟港（東港区）']);
+D.push(['北陸信越','20','18',true,false,false,false,false,'新潟県糸魚川市(能生)']);
+D.push(['北陸信越','20','19',true,false,true,true,false,'新潟県佐渡市(畑野)']);
+D.push(['北陸信越','20','20',true,false,true,true,false,'新潟県佐渡市(真野)']);
+D.push(['北陸信越','20','21',true,false,true,true,false,'新潟県村上市(岩船)']);
+D.push(['北陸信越','20','23',true,false,false,false,false,'新潟県佐渡市（鷲崎）']);
+D.push(['北陸信越','20','24',true,false,false,false,false,'新潟県佐渡市（夷）']);
+D.push(['北陸信越','20','25',true,false,false,false,false,'新潟県佐渡市（水津）']);
+D.push(['北陸信越','44','01',true,false,true,true,false,'石川県宝達志水町']);
+D.push(['北陸信越','44','02',true,false,true,true,false,'石川県加賀市']);
+D.push(['北陸信越','44','03',true,false,true,true,false,'石川県金沢市']);
+D.push(['北陸信越','44','04',true,false,false,false,false,'石川県小松市']);
+D.push(['北陸信越','44','05',true,false,false,false,false,'石川県珠洲市（飯田）']);
+D.push(['北陸信越','44','05',true,false,false,false,false,'石川県珠洲市（高屋港）']);
+D.push(['北陸信越','44','06',true,false,true,true,false,'石川県志賀町']);
+D.push(['北陸信越','44','07',true,false,true,true,false,'石川県羽咋市']);
+D.push(['北陸信越','44','08',true,false,false,false,false,'石川県白山市']);
+D.push(['北陸信越','44','09',true,false,false,false,false,'石川県輪島市']);
+D.push(['北陸信越','44','09',true,false,false,false,false,'石川県輪島市（門前）']);
+D.push(['北陸信越','44','10',true,false,false,false,false,'富山県朝日町']);
+D.push(['北陸信越','44','12',true,false,false,false,false,'富山県黒部市']);
+D.push(['北陸信越','44','13',true,false,false,false,false,'富山県滑川市']);
+D.push(['北陸信越','44','11',true,false,true,true,false,'富山県魚津市']);
+D.push(['北陸信越','51','06',true,false,false,false,false,'福井県越前町']);
+D.push(['北陸信越','51','07',true,false,true,true,false,'福井県福井市（茱崎）']);
+D.push(['北陸信越','44','22',true,false,true,true,false,'福井県福井市']);
+D.push(['北陸信越','51','10',true,false,true,true,false,'福井県坂井市（三国）']);
+D.push(['北陸信越','51','08',true,false,false,false,false,'福井県高浜町']);
+D.push(['北陸信越','51','11',true,false,false,false,false,'福井県美浜町']);
+
+/* ===== 関東 ===== */
+D.push(['関東','31','01',true,false,false,false,false,'茨城県鹿嶋市']);
+D.push(['関東','31','02',true,false,false,false,false,'茨城県北茨城市']);
+D.push(['関東','31','03',true,false,true,true,false,'茨城県ひたちなか市']);
+D.push(['関東','31','04',true,false,true,true,false,'茨城県日立市']);
+D.push(['関東','31','07',true,false,true,true,false,'千葉県銚子市']);
+D.push(['関東','32','04',true,false,true,true,false,'千葉県勝浦市']);
+D.push(['関東','32','05',true,false,false,false,false,'千葉県鴨川市']);
+D.push(['関東','32','06',true,false,true,true,false,'千葉県南房総市（千倉）']);
+D.push(['関東','32','07',true,false,true,true,false,'千葉県九十九里町']);
+D.push(['関東','32','09',true,false,true,true,false,'千葉県館山市']);
+D.push(['関東','32','10',true,false,true,true,false,'千葉県旭市（飯岡）']);
+D.push(['関東','32','11',true,false,false,false,false,'千葉県横芝光町（光）']);
+D.push(['関東','32','93',true,false,false,false,false,'千葉県南房総市（白浜）']);
+D.push(['関東','32','94',true,false,false,false,false,'千葉県鋸南町']);
+D.push(['関東','32','96',true,false,true,true,false,'千葉県いすみ市（岬）']);
+D.push(['関東','35','01',true,false,true,true,false,'神奈川県葉山町']);
+D.push(['関東','30','01',true,false,true,true,false,'東京都大島町']);
+D.push(['関東','30','02',true,false,true,true,false,'東京都小笠原村（父島）']);
+D.push(['関東','30','03',true,false,true,true,false,'東京都小笠原村（母島）']);
+D.push(['関東','30','04',true,false,false,false,false,'東京都神津島村']);
+D.push(['関東','30','05',true,false,false,false,false,'東京都利島村']);
+D.push(['関東','30','06',true,false,false,false,false,'東京都新島村']);
+D.push(['関東','30','07',true,false,true,true,false,'東京都八丈町']);
+D.push(['関東','30','08',true,false,true,true,false,'東京都三宅村']);
+D.push(['関東','30','09',true,false,false,false,false,'東京都御蔵島村']);
+D.push(['関東','35','02',true,false,false,false,false,'神奈川県平塚市']);
+D.push(['関東','35','03',true,false,false,false,false,'神奈川県真鶴町']);
+D.push(['関東','35','04',true,false,false,false,false,'神奈川県三浦市']);
+
+/* ===== 中部 ===== */
+D.push(['中部','41','01',true,false,true,true,false,'静岡県伊東市']);
+D.push(['中部','41','02',true,false,true,true,false,'静岡県下田市']);
+D.push(['中部','41','04',true,false,true,true,false,'静岡県松崎町']);
+D.push(['中部','41','05',true,false,false,false,false,'静岡県南伊豆町']);
+D.push(['中部','41','06',true,false,false,false,false,'静岡県東伊豆町']);
+D.push(['中部','42','01',true,false,false,false,false,'静岡県焼津市（大井川）']);
+D.push(['中部','42','02',true,false,true,true,false,'静岡県御前崎市']);
+D.push(['中部','42','04',true,false,false,false,false,'静岡県静岡市']);
+D.push(['中部','42','05',true,false,true,true,false,'静岡県浜名湖']);
+D.push(['中部','42','06',true,false,false,false,false,'静岡県磐田市（福田）']);
+D.push(['中部','42','07',true,false,false,false,false,'愛知県田原市（赤羽根漁港）']);
+D.push(['中部','43','01',true,false,true,true,false,'三重県尾鷲市尾鷲港']);
+D.push(['中部','43','02',true,false,false,false,false,'三重県尾鷲市古江町']);
+D.push(['中部','43','04',true,false,false,false,false,'三重県大紀町']);
+D.push(['中部','43','05',true,false,true,true,false,'三重県熊野市']);
+D.push(['中部','43','06',true,false,false,false,false,'三重県紀北町']);
+D.push(['中部','43','07',true,false,false,false,false,'三重県南伊勢町']);
+
+/* ===== 近畿 ===== */
+D.push(['近畿','51','01',true,false,true,true,false,'京都府京丹後市（網野）']);
+D.push(['近畿','51','02',true,false,true,true,false,'京都府京丹後市（久美浜）']);
+D.push(['近畿','51','05',true,false,false,false,false,'京都府京丹後市（中浜）']);
+D.push(['近畿','51','04',true,false,true,true,false,'京都府京丹後市（間人）']);
+D.push(['近畿','60','06',true,false,true,true,false,'兵庫県新温泉町（居組港）']);
+D.push(['近畿','60','03',true,false,true,true,false,'兵庫県香美町']);
+D.push(['近畿','60','04',true,false,true,true,false,'兵庫県豊岡市（津居山）']);
+D.push(['近畿','60','02',true,false,true,true,false,'兵庫県淡路島（西海岸）']);
+D.push(['近畿','60','05',true,false,true,true,false,'兵庫県淡路島（南海岸）']);
+D.push(['近畿','52','01',true,false,false,false,false,'和歌山県印南町']);
+D.push(['近畿','52','02',true,false,true,true,false,'和歌山県串本町']);
+D.push(['近畿','52','03',true,false,false,false,false,'和歌山県御坊市']);
+D.push(['近畿','52','04',true,false,false,false,false,'和歌山県すさみ町']);
+D.push(['近畿','52','05',true,false,true,true,false,'和歌山県田辺市']);
+D.push(['近畿','52','06',true,false,false,false,false,'和歌山県由良町']);
+
+/* ===== 中国 ===== */
+D.push(['中国','72','01',true,false,true,true,false,'鳥取県琴浦町']);
+D.push(['中国','72','02',true,false,true,true,false,'鳥取県鳥取市']);
+D.push(['中国','72','03',true,false,true,true,false,'鳥取県湯梨浜町']);
+D.push(['中国','72','09',true,false,false,false,false,'鳥取県岩美町']);
+D.push(['中国','72','10',true,false,false,false,false,'鳥取県大山町']);
+D.push(['中国','72','04',true,false,true,true,false,'島根県出雲市']);
+D.push(['中国','72','05',true,false,true,true,false,'島根県隠岐の島町']);
+D.push(['中国','72','06',true,false,true,true,false,'島根県松江市島根町']);
+D.push(['中国','72','07',true,false,true,true,false,'島根県浜田市']);
+D.push(['中国','72','08',true,false,true,true,false,'島根県益田市']);
+D.push(['中国','72','11',true,false,false,false,false,'島根県大田市']);
+D.push(['中国','72','12',true,false,false,false,false,'島根県松江市鹿島町']);
+D.push(['中国','72','13',true,false,false,false,false,'島根県江津市']);
+D.push(['中国','72','14',true,false,false,false,false,'島根県大田市（仁摩）']);
+D.push(['中国','72','15',true,false,false,false,false,'島根県出雲市平田町']);
+D.push(['中国','72','16',true,false,false,false,false,'島根県浜田市（三隅）']);
+D.push(['中国','72','17',true,false,false,false,false,'島根県松江市美保関町']);
+D.push(['中国','72','18',true,false,false,false,false,'島根県大田市（温泉津）']);
+D.push(['中国','91','02',true,false,true,true,false,'山口県萩市須佐']);
+D.push(['中国','91','03',true,false,true,true,false,'山口県下関市豊浦町']);
+
+/* ===== 四国 ===== */
+D.push(['四国','80','01',true,false,false,false,false,'香川県東かがわ市']);
+D.push(['四国','80','02',true,false,false,false,false,'徳島県阿南市']);
+D.push(['四国','80','03',true,false,false,false,false,'徳島県海陽町']);
+D.push(['四国','80','04',true,false,true,true,false,'徳島県徳島市']);
+D.push(['四国','80','05',true,false,false,false,false,'徳島県鳴門市']);
+D.push(['四国','80','06',true,false,false,false,false,'徳島県美波町']);
+D.push(['四国','80','07',true,false,false,false,false,'徳島県牟岐町']);
+D.push(['四国','81','01',true,false,true,true,false,'愛媛県愛南町（城辺）']);
+D.push(['四国','81','02',true,false,true,true,false,'愛媛県伊方町（大久）']);
+D.push(['四国','81','03',true,false,true,true,false,'愛媛県伊方町（三机）']);
+D.push(['四国','81','04',true,false,true,true,false,'愛媛県大洲市（長浜）']);
+D.push(['四国','81','05',true,false,false,false,false,'愛媛県伊予市（双海）']);
+D.push(['四国','81','07',true,false,true,true,false,'愛媛県伊方町（三崎）']);
+D.push(['四国','82','01',true,false,false,false,false,'高知県安芸市']);
+D.push(['四国','82','02',true,false,false,false,false,'高知県大月町']);
+D.push(['四国','82','03',true,false,false,false,false,'高知県四万十町(窪川）']);
+D.push(['四国','82','04',true,false,true,true,false,'高知県高知市']);
+D.push(['四国','82','05',true,false,true,true,false,'高知県黒潮町（佐賀）']);
+D.push(['四国','82','06',true,false,true,true,false,'高知県宿毛市']);
+D.push(['四国','82','07',true,false,true,true,false,'高知県須崎市']);
+D.push(['四国','82','08',true,false,true,true,false,'高知県東洋町']);
+D.push(['四国','82','09',true,false,true,true,false,'高知県土佐市']);
+D.push(['四国','82','10',true,false,true,true,false,'高知県土佐清水市']);
+D.push(['四国','82','10',true,false,false,false,false,'高知県土佐清水市（下ノ加江）']);
+D.push(['四国','82','12',true,false,false,false,false,'高知県土佐清水市（三崎）']);
+D.push(['四国','82','13',true,false,false,false,false,'高知県中土佐町']);
+D.push(['四国','82','14',true,false,true,true,false,'高知県四万十市（中村）']);
+D.push(['四国','82','15',true,false,true,true,false,'高知県奈半利町']);
+D.push(['四国','82','16',true,false,true,true,false,'高知県室戸市']);
+D.push(['四国','82','16',true,false,false,false,false,'高知県室戸市（佐喜浜）']);
+D.push(['四国','82','17',true,false,false,false,false,'高知県香南市（夜須）']);
+D.push(['四国','82','18',true,false,false,false,false,'高知県香南市（吉川）']);
+
+/* ===== 九州 ===== */
+D.push(['九州','90','17',true,false,false,false,false,'福岡県宗像市（大島）']);
+D.push(['九州','90','18',true,false,true,true,false,'福岡県福津市（津屋崎）']);
+D.push(['九州','90','19',true,false,true,true,false,'福岡県豊前市']);
+D.push(['九州','90','20',true,false,false,false,false,'福岡県芦屋町']);
+D.push(['九州','94','01',true,false,true,true,false,'大分県国東市（安岐）']);
+D.push(['九州','94','02',true,false,true,true,false,'大分県宇佐市']);
+D.push(['九州','94','03',true,false,true,true,false,'大分県豊後高田市（香々地）']);
+D.push(['九州','94','04',true,false,true,true,false,'大分県佐伯市（蒲江）']);
+D.push(['九州','94','05',true,false,true,true,false,'大分県杵築市']);
+D.push(['九州','94','06',true,false,true,true,false,'大分県国東市（国東）']);
+D.push(['九州','94','07',true,false,true,true,false,'大分県国東市（国見）']);
+D.push(['九州','94','08',true,false,true,true,false,'大分県佐伯市']);
+D.push(['九州','94','09',true,false,false,false,false,'大分県佐伯市（鶴見）']);
+D.push(['九州','94','10',true,false,true,true,false,'大分県中津市']);
+D.push(['九州','94','11',true,false,true,true,false,'大分県豊後高田市']);
+D.push(['九州','94','12',true,false,true,true,false,'大分県豊後高田市（真玉）']);
+D.push(['九州','94','13',true,false,true,true,false,'大分県国東市（武蔵）']);
+D.push(['九州','94','19',true,false,false,false,false,'大分県佐伯市（米水津）']);
+D.push(['九州','94','14',true,false,false,false,false,'宮崎県門川町']);
+D.push(['九州','94','15',true,false,true,true,false,'宮崎県延岡市（北浦）']);
+D.push(['九州','94','16',true,false,true,true,false,'宮崎県延岡市']);
+D.push(['九州','94','17',true,false,true,true,false,'宮崎県日向市']);
+D.push(['九州','95','32',true,false,true,true,false,'宮崎県串間市']);
+D.push(['九州','95','33',true,false,true,true,false,'宮崎県新富町']);
+D.push(['九州','95','34',true,false,true,true,false,'宮崎県都農町']);
+D.push(['九州','95','35',true,false,true,true,false,'宮崎県日南市']);
+D.push(['九州','95','36',true,false,true,true,false,'宮崎県宮崎市']);
+D.push(['九州','90','02',true,false,true,true,false,'長崎県壱岐島']);
+D.push(['九州','90','05',true,false,true,true,false,'長崎県対馬市（厳原町東部）']);
+D.push(['九州','90','07',true,false,true,true,false,'長崎県対馬市（厳原町西部）']);
+D.push(['九州','90','10',true,false,true,true,false,'長崎県対馬市（上県）']);
+D.push(['九州','90','11',true,false,true,true,false,'長崎県対馬市（上対馬）']);
+D.push(['九州','90','15',true,false,true,true,false,'長崎県対馬市（峰町東部）']);
+D.push(['九州','92','01',true,false,true,true,false,'長崎県新上五島町(東岸)']);
+D.push(['九州','92','03',true,false,true,true,false,'長崎県小値賀町・佐世保市（宇久）']);
+D.push(['九州','92','04',true,false,true,true,false,'長崎県新上五島町(西岸)']);
+D.push(['九州','92','05',true,false,true,true,false,'長崎県五島市(北岸)']);
+D.push(['九州','92','06',true,false,true,true,false,'長崎県新上五島町(北岸)']);
+D.push(['九州','92','08',true,false,true,true,false,'長崎県五島市(西岸)']);
+D.push(['九州','92','09',true,false,true,true,false,'長崎県五島市(南東岸)']);
+D.push(['九州','92','11',true,false,true,true,false,'長崎県長崎市（橘湾）']);
+D.push(['九州','92','15',true,false,true,true,false,'長崎県五島市（福江）']);
+D.push(['九州','92','16',true,false,true,true,false,'長崎県対馬市（峰町西部）']);
+D.push(['九州','92','17',true,false,true,true,false,'長崎県五島市(北西岸）']);
+D.push(['九州','92','18',true,false,true,true,false,'長崎県雲仙市（南串山）']);
+D.push(['九州','93','01',true,false,true,true,false,'熊本県天草市']);
+D.push(['九州','95','01',true,false,true,true,false,'鹿児島県出水市']);
+D.push(['九州','95','02',true,false,true,true,false,'鹿児島県肝付町']);
+D.push(['九州','95','03',true,false,true,true,false,'鹿児島県肝付町（船間）']);
+D.push(['九州','95','04',true,false,true,true,false,'鹿児島県南九州市（頴娃）']);
+D.push(['九州','95','05',true,false,true,true,true,'鹿児島県奄美市（笠利）']);
+D.push(['九州','95','06',true,false,true,true,false,'鹿児島県南さつま市（加世田）']);
+D.push(['九州','95','07',true,false,true,true,false,'鹿児島県屋久島町（口永良部島）']);
+D.push(['九州','95','08',true,false,true,true,false,'鹿児島県屋久島町（上屋久永田港）']);
+D.push(['九州','95','09',true,false,true,true,false,'鹿児島県屋久島町（宮之浦港）']);
+D.push(['九州','95','10',true,false,true,true,true,'鹿児島県喜界町']);
+D.push(['九州','95','11',true,false,true,true,false,'鹿児島県いちき串木野市']);
+D.push(['九州','95','12',true,false,true,true,false,'鹿児島県南大隅町（佐多）']);
+D.push(['九州','95','13',true,false,true,true,false,'鹿児島県薩摩川内市（下甑）']);
+D.push(['九州','95','14',true,false,true,true,true,'鹿児島県奄美市（住用）']);
+D.push(['九州','95','15',true,false,true,true,false,'鹿児島県徳之島町']);
+D.push(['九州','95','16',true,false,true,true,false,'鹿児島県中種子町（増田港）']);
+D.push(['九州','95','17',true,false,true,true,true,'鹿児島県奄美市（名瀬港）']);
+D.push(['九州','95','18',true,false,true,true,true,'鹿児島県奄美市（小湊港）']);
+D.push(['九州','95','19',true,false,true,true,false,'鹿児島県西之表市']);
+D.push(['九州','95','20',true,false,true,true,false,'鹿児島県西之表市（田之脇）']);
+D.push(['九州','95','21',true,false,true,true,false,'鹿児島県南さつま市（坊津）']);
+D.push(['九州','95','22',true,false,true,true,false,'鹿児島県枕崎市']);
+D.push(['九州','95','23',true,false,true,true,false,'鹿児島県三島村（硫黄島、竹島）']);
+D.push(['九州','95','24',true,false,true,true,false,'鹿児島県三島村（黒島）']);
+D.push(['九州','95','25',true,false,true,true,false,'鹿児島県南種子町（島間港）']);
+D.push(['九州','95','26',true,false,true,true,false,'鹿児島県南種子町（竹崎港）']);
+D.push(['九州','95','27',true,false,true,true,false,'鹿児島県屋久島町（安房港）']);
+D.push(['九州','95','28',true,false,true,true,false,'鹿児島県屋久島町（湯泊港）']);
+D.push(['九州','95','29',true,false,true,true,true,'鹿児島県大和村']);
+D.push(['九州','95','30',true,false,true,true,false,'鹿児島県与論町']);
+D.push(['九州','95','31',true,false,true,true,false,'鹿児島県和泊町']);
+D.push(['九州','95','80',true,false,true,true,false,'鹿児島県十島村（中之島）']);
+D.push(['九州','95','81',true,false,true,true,false,'鹿児島県十島村（諏訪之瀬島）']);
+D.push(['九州','95','82',true,false,true,true,false,'鹿児島県十島村（悪石島）']);
+D.push(['九州','95','83',true,false,true,true,false,'鹿児島県十島村（宝島）']);
+
+/* ===== 沖縄 ===== */
+D.push(['沖縄','96','01',true,false,true,true,false,'沖縄県粟国村']);
+D.push(['沖縄','96','02',true,false,true,true,false,'沖縄県石垣市（伊原間）']);
+D.push(['沖縄','96','07',true,false,true,true,false,'沖縄県糸満市']);
+D.push(['沖縄','96','08',true,false,true,true,false,'沖縄県伊是名村']);
+D.push(['沖縄','96','09',true,false,true,true,false,'沖縄県大宜味村']);
+D.push(['沖縄','96','10',true,false,true,true,false,'沖縄県恩納村']);
+D.push(['沖縄','96','12',true,false,true,true,false,'沖縄県嘉手納町']);
+D.push(['沖縄','96','13',true,false,true,true,false,'沖縄県八重瀬町（具志頭）']);
+D.push(['沖縄','96','14',true,false,true,true,false,'沖縄県久米島町（具志川）']);
+D.push(['沖縄','96','15',true,false,true,true,false,'沖縄県国頭村']);
+D.push(['沖縄','96','16',true,false,true,true,false,'沖縄県国頭村（宜名真）']);
+D.push(['沖縄','96','17',true,false,true,true,false,'沖縄県国頭村（奥）']);
+D.push(['沖縄','96','18',true,false,true,true,false,'沖縄県国頭村（安田）']);
+D.push(['沖縄','96','20',true,false,true,true,false,'沖縄県竹富町（波照間）']);
+D.push(['沖縄','96','21',true,false,true,true,false,'沖縄県多良間村']);
+D.push(['沖縄','96','23',true,false,true,true,false,'沖縄県渡名喜村']);
+D.push(['沖縄','96','24',true,false,true,true,false,'沖縄県那覇市']);
+D.push(['沖縄','96','25',true,false,true,true,false,'沖縄県名護市']);
+D.push(['沖縄','96','26',true,false,true,true,false,'沖縄県名護市（辺野古）']);
+D.push(['沖縄','96','27',true,false,true,true,false,'沖縄県東村']);
+D.push(['沖縄','96','28',true,false,true,true,false,'沖縄県南大東村']);
+D.push(['沖縄','96','29',true,false,true,true,false,'沖縄県読谷村']);
+D.push(['沖縄','96','30',true,false,true,true,false,'沖縄県与那国町']);
+D.push(['沖縄','96','31',true,false,true,true,false,'沖縄県本部町']);
+D.push(['沖縄','96','32',true,false,true,true,false,'沖縄県宮古島市（平良）']);
+D.push(['沖縄','96','33',true,false,true,true,false,'沖縄県座間味村']);
+D.push(['沖縄','96','03',true,false,true,true,false,'沖縄県石垣市（伊野田）']);
+D.push(['沖縄','96','05',true,false,true,true,false,'沖縄県石垣市（平久保）']);
+D.push(['沖縄','96','11',true,false,true,true,false,'沖縄県恩納村（恩納）']);
+
+/* ===== その他 ===== */
+D.push(['その他','35','13',true,false,true,true,false,'相模湾']);
+
+
+/* ===== フィルター ===== */
+var fType='all', fRegion='all';
+
+function mkBtn(ab,gg,nn,sss,sail){
+  var url=B+ab+gg+nn+sss+'.pdf';
+  var cls=sail?'sail':(ab==='02'?'spd2':'spd');
+  return '<a href="'+url+'" target="_blank" class="pdf-btn '+cls+'" title="'+url+'">PDF</a>';
+}
+function naBtn(){
+  return '<td><span class="pdf-btn na">—</span></td>';
+}
+
+function build(){
+  var tbody=document.getElementById('tbody');
+  tbody.innerHTML=''; var cnt=0;
+  console.log('build() called: fType='+fType+' fRegion='+fRegion+' D.length='+D.length);
+  D.forEach(function(a){
+    var region=a[0],gg=a[1],nn=a[2],h01=a[3],h02=a[4],h04=a[5],h05=a[6],h30=a[7],desc=a[8];
+    var typeOk=fType==='all'||(fType==='kisen'&&(h01||h02))||(fType==='hansen'&&(h04||h05));
+    var regionOk=fRegion==='all'||fRegion===region;
+    if(!typeOk||!regionOk) return;
+
+    function addRow(ab,cls,label){
+      var cells='';
+      if(ab==='sail'){
+        var bHtml='';
+        if(h04&&h05){
+          bHtml='<div style="display:flex;gap:8px;justify-content:center">'
+            +'<div style="text-align:center">'+mkBtn('04',gg,nn,'099',true)+'<div style="font-size:9px;margin-top:2px">12海里</div></div>'
+            +'<div style="text-align:center">'+mkBtn('05',gg,nn,'099',true)+'<div style="font-size:9px;margin-top:2px">5海里</div></div>'
+            +'</div>';
+        } else if(h04){
+          bHtml='<div style="text-align:center">'+mkBtn('04',gg,nn,'099',true)+'<div style="font-size:9px;margin-top:2px">12海里</div></div>';
+        } else {
+          bHtml='<div style="text-align:center">'+mkBtn('05',gg,nn,'099',true)+'<div style="font-size:9px;margin-top:2px">5海里</div></div>';
+        }
+        cells=naBtn()+naBtn()+naBtn()+naBtn()+naBtn()+naBtn()+'<td>'+bHtml+'</td>';
+      } else {
+        var speeds=h30?['005','010','015','020','025','030']:['005','010','015','020','025'];
+        speeds.forEach(function(s){
+          cells+='<td>'+mkBtn(ab,gg,nn,s,false)+'</td>';
+        });
+        if(!h30) cells+=naBtn(); /* 30ノット列を空で埋める */
+        cells+=naBtn(); /* 帆船列 */
+      }
+      var tr=document.createElement('tr');
+      tr.innerHTML='<td class="left"><span class="tbadge '+cls+'">'+label+'</span></td>'
+        +'<td class="left"><span class="rbadge">'+region+'</span></td>'
+        +'<td class="left"><span class="area-num">'+gg+'-'+nn+'</span>'
+        +' <span style="font-size:12px;color:var(--muted)">'+desc+'</span></td>'
+        +cells;
+      tbody.appendChild(tr); cnt++;
+    }
+    if(fType==='all'||fType==='kisen'){
+      if(h01) addRow('01','t01','汽船 5海里超');
+      if(h02) addRow('02','t02','汽船 5海里以内');
+    }
+    if(fType==='all'||fType==='hansen'){
+      if(h04||h05){
+        var sailLabel=h04&&h05?'帆船 12/5海里':(h04?'帆船 12海里':'帆船 5海里');
+        addRow('sail','t04',sailLabel);
+      }
+    }
+  });
+  document.getElementById('noData').style.display=cnt===0?'block':'none';
+  if(cnt===0) document.getElementById('noData').textContent='該当する行がありません';
+  console.log('build() done: cnt='+cnt+' rows added');
+}
+
+function setF(key,val,btn){
+  if(key==='type'){
+    fType=val;
+    document.querySelectorAll('#typeRow .fbtn').forEach(function(b){b.classList.remove('on');});
+  } else {
+    fRegion=val;
+    document.querySelectorAll('#regionRow .fbtn').forEach(function(b){b.classList.remove('on');});
+  }
+  btn.classList.add('on');
+  build();
+}
+
+/* ===== マップ ===== */
+var GEO=[
+  ['平水','第１号（東京湾）','99','01',35.5,139.8,true,true,true,true],
+  ['平水','第２号（駿河湾）','99','02',34.9,138.6,true,true,true,true],
+  ['平水','第３号（伊勢湾・三河湾）','99','03',34.8,136.8,true,true,true,true],
+  ['平水','第４号（的矢湾）','99','04',34.35,136.74,true,true,true,true],
+  ['平水','第５号（英虞湾）','99','05',34.32,136.78,true,true,true,true],
+  ['平水','第６号（那智勝浦町）','99','06',33.62,136.01,true,true,true,true],
+  ['平水','第７号（大阪湾）','99','07',34.5,135.3,true,true,true,true],
+  ['平水','第８号（瀬戸内海）','99','08',34.1,132.5,true,true,true,true],
+  ['平水','第１０号（関門海峡）','99','10',33.95,130.95,true,true,true,true],
+  ['平水','第１１号（宇和島市）','99','11',33.22,132.56,true,true,true,true],
+  ['平水','第１２号（別府湾）','99','12',33.3,131.6,true,true,true,true],
+  ['平水','第１３号（鹿児島湾）','99','13',31.2,130.6,true,true,true,true],
+  ['平水','第１４号（瀬戸内町）','99','14',28.15,129.32,true,true,true,true],
+  ['平水','第１５号（中城湾）','99','15',26.25,127.85,true,true,true,true],
+  ['平水','第１６号（本部町）','99','16',26.66,127.89,true,true,true,true],
+  ['平水','第１７号（羽地内海）','99','17',26.57,127.98,true,true,true,true],
+  ['平水','第１８号（慶良間）','99','18',26.19,127.36,true,true,true,true],
+  ['平水','第１９号（宮古島）','99','19',24.81,125.28,true,true,true,true],
+  ['平水','第２０号（石垣島）','99','20',24.4,124.2,true,true,true,true],
+  ['平水','第２１号（西表島）','99','21',24.35,123.75,true,true,true,true],
+  ['平水','第２２号（有明海）','99','22',32.8,130.4,true,true,true,true],
+  ['平水','第２３号（長崎湾）','99','23',32.72,129.86,true,true,true,true],
+  ['平水','第２４号（佐世保湾）','99','24',33.15,129.72,true,true,true,true],
+  ['平水','第２４の２号（五島中通島）','99','24',32.98,129.08,true,true,true,true],
+  ['平水','第２５号（対馬）','99','25',34.21,129.29,true,true,true,true],
+  ['平水','第２６号（伊万里市）','99','26',33.27,129.87,true,true,true,true],
+  ['平水','第２７号（唐津湾）','99','27',33.45,129.97,true,true,true,true],
+  ['平水','第２８号（博多湾）','99','28',33.63,130.38,true,true,true,true],
+  ['平水','第２９号（油谷湾）','99','29',34.44,131.2,true,true,true,true],
+  ['平水','第３０号（仙崎湾、深川湾）','99','30',34.37,131.19,true,true,true,true],
+  ['平水','第３１号（隠岐島前）','99','31',36.1,133.1,true,true,true,true],
+  ['平水','第３２号（境港市）','99','32',35.55,133.23,true,true,true,true],
+  ['平水','第３３号（舞鶴湾）','99','33',35.47,135.4,true,true,true,true],
+  ['平水','第３４号（小浜湾）','99','34',35.5,135.77,true,true,true,true],
+  ['平水','第３５号（敦賀湾）','99','35',35.64,136.07,true,true,true,true],
+  ['平水','第３６号（富山湾）','99','36',36.8,137.1,true,true,true,true],
+  ['平水','第３７号（陸奥湾）','99','37',41.1,140.9,true,true,true,true],
+  ['平水','第３８号（函館市）','99','38',41.8,140.75,true,true,true,true],
+  ['平水','第３９号（寿都湾）','99','39',42.8,140.2,true,true,true,true],
+  ['平水','第４０号（小樽市）','99','40',43.2,141.0,true,true,true,true],
+  ['平水','第４０の２号（別海町）','99','40',43.5,145.1,true,true,true,true],
+  ['平水','第４１号（厚岸町）','99','41',43.05,144.85,true,true,true,true],
+  ['平水','第４２号（宮古市）','99','42',39.64,141.95,true,true,true,true],
+  ['平水','第４３号（山田町）','99','43',39.47,141.95,true,true,true,true],
+  ['平水','第４４号（大槌町）','99','44',39.36,141.89,true,true,true,true],
+  ['平水','第４５号（釜石市）','99','45',39.27,141.88,true,true,true,true],
+  ['平水','第４６号（大船渡市）','99','46',39.08,141.72,true,true,true,true],
+  ['平水','第４７号（気仙沼市）','99','47',38.91,141.57,true,true,true,true],
+  ['平水','第４８号（女川町）','99','48',38.44,141.44,true,true,true,true],
+  ['平水','第４８の２号（石巻市）','99','48',38.45,141.3,true,true,true,true],
+  ['平水','第４９号（松島湾）','99','49',38.36,141.07,true,true,true,true],
+  ['北海道','北海道石狩市（厚田区）','00','01',43.41,141.43,true,false,true,false],
+  ['北海道','北海道石狩市','00','05',43.19,141.32,true,false,true,true],
+  ['北海道','北海道石狩市（浜益区）','00','48',43.57,141.6,true,false,true,true],
+  ['北海道','北海道網走市','00','02',44.02,144.27,true,false,true,true],
+  ['北海道','北海道雄武町','00','11',44.58,142.95,true,false,false,false],
+  ['北海道','北海道興部町','00','12',44.47,143.09,true,false,false,true],
+  ['北海道','北海道佐呂間町','00','19',43.92,143.77,true,false,false,false],
+  ['北海道','北海道斜里町','00','24',43.9,144.59,true,false,false,false],
+  ['北海道','北海道斜里町（ウトロ）','00','25',44.07,144.82,true,false,true,true],
+  ['北海道','北海道斜里町（知布泊）','00','26',43.97,144.62,true,false,false,false],
+  ['北海道','北海道北見市（常呂）','00','34',43.85,144.11,true,false,false,false],
+  ['北海道','北海道紋別市','00','58',44.35,143.35,true,false,true,true],
+  ['北海道','北海道湧別町','00','60',44.18,143.64,true,false,false,false],
+  ['北海道','北海道厚真町','00','03',42.69,141.89,true,false,false,false],
+  ['北海道','北海道白老町','00','28',42.56,141.35,true,false,true,true],
+  ['北海道','北海道伊達市','00','32',42.47,140.86,true,false,true,true],
+  ['北海道','北海道苫小牧市','00','35',42.64,141.6,true,false,true,true],
+  ['北海道','北海道登別市','00','43',42.41,141.1,true,false,true,true],
+  ['北海道','北海道むかわ町（鵡川）','00','56',42.58,141.94,true,false,false,false],
+  ['北海道','北海道室蘭市','00','57',42.31,140.97,true,false,true,true],
+  ['北海道','北海道豊浦町','02','22',42.67,140.57,true,false,true,true],
+  ['北海道','北海道岩内町','00','06',42.97,140.51,true,false,true,true],
+  ['北海道','北海道神恵内村','00','14',43.22,140.38,true,false,true,true],
+  ['北海道','北海道積丹町（美国）','00','22',43.28,140.61,true,false,true,true],
+  ['北海道','北海道積丹町（余別）','00','23',43.29,140.5,true,false,true,true],
+  ['北海道','北海道古平町','00','52',43.23,140.68,true,false,true,true],
+  ['北海道','北海道余市町','00','61',43.19,140.78,true,false,true,true],
+  ['北海道','北海道島牧村（原歌）','02','14',42.72,139.9,true,false,true,true],
+  ['北海道','北海道島牧村（本目）','02','15',42.63,139.89,true,false,false,false],
+  ['北海道','北海道浦河町','00','07',42.16,142.77,true,false,true,true],
+  ['北海道','北海道えりも町','00','09',42.0,143.26,true,false,true,true],
+  ['北海道','北海道様似町','00','17',43.5,141.4,true,false,false,false],
+  ['北海道','北海道新ひだか町（静内）','00','20',42.37,142.4,true,false,true,true],
+  ['北海道','北海道新冠町','00','38',42.37,142.3,true,false,false,false],
+  ['北海道','北海道新ひだか町（東静内）','00','50',42.55,142.54,true,false,false,false],
+  ['北海道','北海道新ひだか町（三石）','00','55',42.23,142.67,true,false,false,false],
+  ['北海道','北海道日高町（門別）','00','59',42.43,142.07,true,false,true,true],
+  ['北海道','北海道えりも町（庶野）','00','69',42.07,143.21,true,false,false,false],
+  ['北海道','北海道枝幸町','00','08',44.93,142.58,true,false,false,false],
+  ['北海道','北海道猿払村','00','18',45.22,142.21,true,false,false,false],
+  ['北海道','北海道稚内市（宗谷）','00','30',45.5,141.93,true,false,true,true],
+  ['北海道','北海道浜頓別町（頓別）','00','46',44.9,142.37,true,false,true,true],
+  ['北海道','北海道稚内市（抜海）','00','49',45.4,141.64,true,false,false,false],
+  ['北海道','北海道利尻島（鴛泊）','00','64',45.17,141.18,true,false,true,true],
+  ['北海道','北海道利尻島（鬼脇）','00','65',45.12,141.2,true,false,true,true],
+  ['北海道','北海道礼文島','00','67',45.3,141.04,true,false,true,true],
+  ['北海道','北海道稚内市','00','68',45.42,141.67,true,false,true,true],
+  ['北海道','北海道遠別町','00','10',44.72,141.76,true,false,true,true],
+  ['北海道','北海道小平町（臼谷）','00','13',44.01,141.69,true,false,false,false],
+  ['北海道','北海道初山別村','00','27',44.23,141.67,true,false,true,true],
+  ['北海道','北海道天塩町','00','33',44.89,141.74,true,false,true,true],
+  ['北海道','北海道苫前町','00','36',44.28,141.64,true,false,false,false],
+  ['北海道','北海道羽幌町','00','44',44.36,141.7,true,false,true,true],
+  ['北海道','北海道羽幌町（天売島、焼尻島）','00','45',44.36,141.7,true,false,true,true],
+  ['北海道','北海道増毛町','00','54',43.85,141.52,true,false,true,true],
+  ['北海道','北海道留萌市','00','66',43.94,141.64,true,false,true,true],
+  ['北海道','北海道釧路市','00','15',43.5,141.4,true,false,true,true],
+  ['北海道','北海道釧路町（昆布森）','00','16',43.5,141.4,true,false,false,false],
+  ['北海道','北海道白糠町','00','29',43.5,141.4,true,false,false,false],
+  ['北海道','北海道浜中町','00','47',43.5,141.4,true,false,true,true],
+  ['北海道','北海道標津町','00','21',43.5,141.4,true,false,false,false],
+  ['北海道','北海道根室市','00','39',43.5,141.4,true,false,true,true],
+  ['北海道','北海道根室市（落石）','00','40',43.5,141.4,true,false,false,false],
+  ['北海道','北海道根室市（花咲）','00','41',43.5,141.4,true,false,true,true],
+  ['北海道','北海道根室市（歯舞）','00','42',43.5,141.4,true,false,false,false],
+  ['北海道','北海道羅臼町','00','62',43.5,141.4,true,false,true,true],
+  ['北海道','北海道羅臼町（相泊）','00','70',43.5,141.4,true,false,false,false],
+  ['北海道','北海道大樹町','00','31',43.5,141.4,true,false,false,false],
+  ['北海道','北海道豊頃町（大津）','00','37',43.5,141.4,true,false,true,true],
+  ['北海道','北海道広尾町','00','51',43.5,141.4,true,false,true,true],
+  ['北海道','北海道江差町','02','01',42.8,140.3,true,false,true,true],
+  ['北海道','北海道奥尻町（青苗）','02','02',42.8,140.3,true,false,false,false],
+  ['北海道','北海道奥尻町（奥尻）','02','03',42.8,140.3,true,false,true,true],
+  ['北海道','北海道乙部町','02','05',42.8,140.3,true,false,false,false],
+  ['北海道','北海道上ノ国町','02','06',42.8,140.3,true,false,false,false],
+  ['北海道','北海道上ノ国町（石崎）','02','07',42.8,140.3,true,false,false,false],
+  ['北海道','北海道上ノ国町（小砂子）','02','08',42.8,140.3,true,false,false,false],
+  ['北海道','北海道せたな町（鵜泊）','02','09',42.8,140.3,true,false,false,false],
+  ['北海道','北海道八雲町（熊石）','02','10',42.8,140.3,true,false,true,true],
+  ['北海道','北海道八雲町（相沼）','02','11',42.8,140.3,true,false,false,false],
+  ['北海道','北海道せたな町','02','17',42.8,140.3,true,false,true,true],
+  ['北海道','北海道せたな町（須築）','02','18',42.8,140.3,true,false,false,false],
+  ['北海道','北海道せたな町（久遠）','02','19',42.8,140.3,true,false,true,true],
+  ['北海道','北海道長万部町','02','04',42.8,140.3,true,false,false,false],
+  ['北海道','北海道森町（砂原）','02','12',42.8,140.3,true,false,true,true],
+  ['北海道','北海道鹿部町','02','13',42.8,140.3,true,false,false,false],
+  ['北海道','北海道知内町','02','16',42.8,140.3,true,false,true,true],
+  ['北海道','北海道函館市（汐首）','02','20',42.8,140.3,true,false,false,false],
+  ['北海道','北海道函館市（新浜）','02','21',42.8,140.3,true,false,true,true],
+  ['北海道','北海道福島町','02','23',42.8,140.3,true,false,true,true],
+  ['北海道','北海道松前町','02','24',42.8,140.3,true,false,true,true],
+  ['北海道','北海道松前町（清部）','02','25',42.8,140.3,true,false,false,false],
+  ['北海道','北海道函館市（川汲）','02','26',42.8,140.3,true,false,true,true],
+  ['北海道','北海道森町','02','27',42.8,140.3,true,false,true,true],
+  ['北海道','北海道八雲町','02','28',42.8,140.3,true,false,false,false],
+  ['北海道','北海道八雲町（落部）','02','29',42.8,140.3,true,false,false,false],
+  ['北海道','北海道木古内町','02','30',42.8,140.3,true,false,false,false],
+  ['北海道','北海道長万部町（国縫）','02','31',42.8,140.3,true,false,false,false],
+  ['北海道','北海道長万部町（静狩）','02','32',42.8,140.3,true,false,false,false],
+  ['東北','青森県鰺ヶ沢町','12','01',40.78,140.22,true,false,true,true],
+  ['東北','青森県今別町','12','02',41.18,140.48,true,false,false,false],
+  ['東北','青森県深浦町(岩崎)','12','03',40.64,139.92,true,false,false,false],
+  ['東北','青森県むつ市(大畑)','12','04',41.29,141.18,true,false,false,false],
+  ['東北','青森県大間町','12','05',40.8,140.5,true,false,false,false],
+  ['東北','青森県中泊町(小泊)','12','06',40.8,140.5,true,false,false,false],
+  ['東北','青森県佐井村','12','07',40.8,140.5,true,false,false,false],
+  ['東北','青森県五所川原市(市浦)','12','08',40.8,140.5,true,false,false,false],
+  ['東北','青森県つがる市(車力)','12','09',40.8,140.5,true,false,false,false],
+  ['東北','青森県階上町','12','11',40.8,140.5,true,false,false,false],
+  ['東北','青森県八戸市','12','12',40.51,141.49,true,false,true,true],
+  ['東北','青森県東通村（岩屋）','12','13',40.8,140.5,true,false,false,false],
+  ['東北','青森県東通村（尻労）','12','14',40.8,140.5,true,false,false,false],
+  ['東北','青森県東通村（白糠）','12','15',40.8,140.5,true,false,true,true],
+  ['東北','青森県深浦町（風合瀬）','12','16',40.64,139.92,true,false,false,false],
+  ['東北','青森県深浦町（北金ヶ沢）','12','17',40.64,139.92,true,false,false,false],
+  ['東北','青森県深浦町（艫作）','12','18',40.64,139.92,true,false,false,false],
+  ['東北','青森県三沢市','12','19',40.68,141.37,true,false,false,false],
+  ['東北','青森県外ヶ浜町(三廐)','12','20',41.13,140.53,true,false,true,true],
+  ['東北','青森県六ケ所村','12','21',40.8,140.5,true,false,false,false],
+  ['東北','岩手県岩泉町','10','01',39.85,141.8,true,false,false,false],
+  ['東北','岩手県久慈市','10','02',39.5,141.9,true,false,true,true],
+  ['東北','岩手県大船渡市（三陸町越喜来）','10','03',39.08,141.72,true,false,false,false],
+  ['東北','岩手県大船渡市（三陸町吉浜）','10','04',39.08,141.72,true,false,false,false],
+  ['東北','岩手県大船渡市（三陸町綾里）','10','05',39.08,141.72,true,false,false,false],
+  ['東北','岩手県洋野町','10','06',39.5,141.9,true,false,true,true],
+  ['東北','岩手県田野畑村','10','07',39.5,141.9,true,false,false,false],
+  ['東北','岩手県宮古市（田老）','10','08',39.64,141.95,true,false,false,false],
+  ['東北','岩手県野田村','10','09',39.5,141.9,true,false,false,false],
+  ['東北','岩手県普代村','10','10',39.5,141.9,true,false,false,false],
+  ['東北','岩手県陸前高田市','10','11',38.99,141.63,true,false,false,false],
+  ['東北','宮城県石巻市潮見町','10','19',38.44,141.3,true,false,true,true],
+  ['東北','宮城県南三陸町歌津','10','20',38.68,141.45,true,false,false,false],
+  ['東北','宮城県石巻市鮎川','10','21',38.44,141.3,true,false,false,false],
+  ['東北','宮城県石巻市北上町','10','22',38.44,141.3,true,false,false,false],
+  ['東北','宮城県南三陸町志津川','10','23',38.68,141.45,true,false,false,false],
+  ['東北','宮城県名取市','10','24',39.5,141.9,true,false,false,false],
+  ['東北','宮城県気仙沼市（本吉）','10','25',38.91,141.57,true,false,false,false],
+  ['東北','宮城県亘理町','10','26',39.5,141.9,true,false,false,false],
+  ['東北','福島県いわき市（四倉）','10','13',37.05,140.89,true,false,false,false],
+  ['東北','福島県いわき市（小名浜）','10','14',37.05,140.89,true,false,true,true],
+  ['東北','福島県いわき市（勿来）','10','15',37.05,140.89,true,false,false,false],
+  ['東北','福島県新地町','10','16',39.5,141.9,true,false,false,false],
+  ['東北','福島県相馬市','10','17',37.8,141.01,true,false,true,true],
+  ['東北','福島県浪江町','10','18',39.5,141.9,true,false,false,false],
+  ['東北','秋田県秋田市','11','01',39.72,140.1,true,false,true,true],
+  ['東北','秋田県秋田市（雄物川）','11','02',39.72,140.1,true,false,false,false],
+  ['東北','秋田県由利本荘市（岩城）','11','03',39.38,140.05,true,false,false,false],
+  ['東北','秋田県男鹿市（北浦）','11','04',39.88,139.85,true,false,false,false],
+  ['東北','秋田県男鹿市（戸賀）','11','05',39.88,139.85,true,false,false,false],
+  ['東北','秋田県男鹿市（畠）','11','06',39.88,139.85,true,false,false,false],
+  ['東北','秋田県男鹿市（船川）','11','07',39.88,139.85,true,false,false,false],
+  ['東北','秋田県にかほ市（象潟）','11','08',39.21,139.91,true,false,false,false],
+  ['東北','秋田県にかほ市（金浦）','11','09',39.21,139.91,true,false,false,false],
+  ['東北','秋田県潟上市','11','10',39.3,140.0,true,false,false,false],
+  ['東北','秋田県にかほ市（平沢）','11','11',39.21,139.91,true,false,false,false],
+  ['東北','秋田県能代市','11','12',39.3,140.0,true,false,true,true],
+  ['東北','秋田県八峰町','11','13',39.3,140.0,true,false,false,false],
+  ['東北','秋田県三種町','11','14',39.3,140.0,true,false,false,false],
+  ['東北','秋田県由利本荘市','11','15',39.38,140.05,true,false,true,true],
+  ['東北','秋田県男鹿市（若美）','11','16',39.88,139.85,true,false,false,false],
+  ['東北','山形県鶴岡市（温海）','11','17',38.56,139.61,true,false,false,false],
+  ['東北','山形県鶴岡市（鼠ヶ関）','11','18',39.3,140.0,true,false,true,true],
+  ['東北','山形県酒田市','11','19',38.91,139.84,true,false,true,true],
+  ['東北','山形県鶴岡市（堅苔沢）','11','21',39.3,140.0,true,false,false,false],
+  ['東北','山形県鶴岡市（加茂）','11','22',39.3,140.0,true,false,true,true],
+  ['東北','山形県鶴岡市（由良）','11','23',39.3,140.0,true,false,true,true],
+  ['東北','山形県遊佐町','11','24',39.02,139.88,true,false,true,true],
+  ['北陸信越','新潟県佐渡市(姫津)','20','01',38.17,138.37,true,false,false,false],
+  ['北陸信越','新潟県粟島浦村','20','02',37.9,138.5,true,false,false,false],
+  ['北陸信越','新潟県出雲崎町','20','03',37.9,138.5,true,false,true,true],
+  ['北陸信越','新潟県糸魚川市','20','04',37.9,138.5,true,false,true,false],
+  ['北陸信越','新潟県新潟市(岩室)','20','05',37.9,138.5,true,false,true,true],
+  ['北陸信越','新潟県糸魚川市(青海)','20','06',37.9,138.5,true,false,false,false],
+  ['北陸信越','新潟県佐渡市(小木)','20','07',38.02,138.37,true,false,false,false],
+  ['北陸信越','新潟県上越市(柿崎区)','20','08',37.9,138.5,true,false,false,false],
+  ['北陸信越','新潟県柏崎市','20','09',37.9,138.5,true,false,true,true],
+  ['北陸信越','新潟県村上市(寝屋）','20','10',37.9,138.5,true,false,false,false],
+  ['北陸信越','新潟県新発田市','20','11',37.9,138.5,true,false,true,true],
+  ['北陸信越','新潟県上越市','20','12',37.9,138.5,true,false,true,true],
+  ['北陸信越','新潟県長岡市（寺泊）','20','13',37.9,138.5,true,false,true,true],
+  ['北陸信越','新潟県新潟市（新川）','20','15',37.9,138.5,true,false,true,true],
+  ['北陸信越','新潟県新潟港（西港区）','20','16',37.9,138.5,true,false,true,true],
+  ['北陸信越','新潟県新潟港（東港区）','20','17',37.9,138.5,true,false,false,false],
+  ['北陸信越','新潟県糸魚川市(能生)','20','18',37.9,138.5,true,false,false,false],
+  ['北陸信越','新潟県佐渡市(畑野)','20','19',38.02,138.37,true,false,true,true],
+  ['北陸信越','新潟県佐渡市(真野)','20','20',38.02,138.37,true,false,true,true],
+  ['北陸信越','新潟県村上市(岩船)','20','21',37.9,138.5,true,false,true,true],
+  ['北陸信越','新潟県佐渡市（鷲崎）','20','23',38.02,138.37,true,false,false,false],
+  ['北陸信越','新潟県佐渡市（夷）','20','24',38.02,138.37,true,false,false,false],
+  ['北陸信越','新潟県佐渡市（水津）','20','25',38.02,138.37,true,false,false,false],
+  ['関東','茨城県鹿嶋市','31','01',35.97,140.64,true,false,false,false],
+  ['関東','茨城県北茨城市','31','02',35.9,140.7,true,false,false,false],
+  ['関東','茨城県ひたちなか市','31','03',35.9,140.7,true,false,true,true],
+  ['関東','茨城県日立市','31','04',35.9,140.7,true,false,true,true],
+  ['関東','千葉県銚子市','31','07',35.73,140.87,true,false,true,true],
+  ['関東','千葉県勝浦市','32','04',35.15,140.31,true,false,true,true],
+  ['関東','千葉県鴨川市','32','05',35.11,140.1,true,false,false,false],
+  ['関東','千葉県南房総市（千倉）','32','06',34.9,139.83,true,false,true,true],
+  ['関東','千葉県九十九里町','32','07',35.2,140.3,true,false,true,true],
+  ['関東','千葉県館山市','32','09',34.99,139.87,true,false,true,true],
+  ['関東','千葉県旭市（飯岡）','32','10',35.71,140.65,true,false,true,true],
+  ['関東','千葉県横芝光町（光）','32','11',35.2,140.3,true,false,false,false],
+  ['関東','千葉県南房総市（白浜）','32','93',34.9,139.83,true,false,false,false],
+  ['関東','千葉県鋸南町','32','94',35.2,140.3,true,false,false,false],
+  ['関東','千葉県いすみ市（岬）','32','96',35.2,140.3,true,false,true,true],
+  ['関東','神奈川県葉山町','35','01',35.27,139.58,true,false,true,true],
+  ['関東','東京都大島町','30','01',34.76,139.37,true,false,true,true],
+  ['関東','東京都小笠原村（父島）','30','02',34.6,139.3,true,false,true,true],
+  ['関東','東京都小笠原村（母島）','30','03',34.6,139.3,true,false,true,true],
+  ['関東','東京都神津島村','30','04',34.21,139.13,true,false,false,false],
+  ['関東','東京都利島村','30','05',34.52,139.27,true,false,false,false],
+  ['関東','東京都新島村','30','06',34.38,139.27,true,false,false,false],
+  ['関東','東京都八丈町','30','07',34.6,139.3,true,false,true,true],
+  ['関東','東京都三宅村','30','08',34.6,139.3,true,false,true,true],
+  ['関東','東京都御蔵島村','30','09',33.9,139.6,true,false,false,false],
+  ['関東','神奈川県平塚市','35','02',35.33,139.35,true,false,false,false],
+  ['関東','神奈川県真鶴町','35','03',35.14,139.14,true,false,false,false],
+  ['関東','神奈川県三浦市','35','04',35.14,139.62,true,false,false,false],
+  ['その他','相模湾','35','13',35.3,139.6,true,false,true,true],
+  ['中部','静岡県伊東市','41','01',34.97,139.1,true,false,true,true],
+  ['中部','静岡県下田市','41','02',34.68,138.94,true,false,true,true],
+  ['中部','静岡県松崎町','41','04',34.75,138.77,true,false,true,true],
+  ['中部','静岡県南伊豆町','41','05',34.66,138.86,true,false,false,false],
+  ['中部','静岡県東伊豆町','41','06',34.8,138.6,true,false,false,false],
+  ['中部','静岡県焼津市（大井川）','42','01',34.85,138.31,true,false,false,false],
+  ['中部','静岡県御前崎市','42','02',34.6,138.13,true,false,true,true],
+  ['中部','静岡県静岡市','42','04',34.8,137.0,true,false,false,false],
+  ['中部','静岡県浜名湖','42','05',34.8,137.0,true,false,true,true],
+  ['中部','静岡県磐田市（福田）','42','06',34.72,137.86,true,false,false,false],
+  ['中部','愛知県田原市（赤羽根漁港）','42','07',34.57,137.1,true,false,false,false],
+  ['中部','三重県尾鷲市尾鷲港','43','01',34.07,136.19,true,false,true,true],
+  ['中部','三重県尾鷲市古江町','43','02',34.07,136.19,true,false,false,false],
+  ['中部','三重県大紀町','43','04',34.0,136.2,true,false,false,false],
+  ['中部','三重県熊野市','43','05',33.89,136.1,true,false,true,true],
+  ['中部','三重県紀北町','43','06',34.0,136.2,true,false,false,false],
+  ['中部','三重県南伊勢町','43','07',34.36,136.67,true,false,false,false],
+  ['北陸信越','石川県宝達志水町','44','01',36.79,136.79,true,false,true,true],
+  ['北陸信越','石川県加賀市','44','02',36.7,136.8,true,false,true,true],
+  ['北陸信越','石川県金沢市','44','03',36.7,136.8,true,false,true,true],
+  ['北陸信越','石川県小松市','44','04',36.7,136.8,true,false,false,false],
+  ['北陸信越','石川県珠洲市（飯田）','44','05',37.43,137.26,true,false,false,false],
+  ['北陸信越','石川県珠洲市（高屋港）','44','05',37.43,137.26,true,false,false,false],
+  ['北陸信越','石川県志賀町','44','06',36.93,136.77,true,false,true,true],
+  ['北陸信越','石川県羽咋市','44','07',36.89,136.79,true,false,true,true],
+  ['北陸信越','石川県白山市','44','08',36.7,136.8,true,false,false,false],
+  ['北陸信越','石川県輪島市','44','09',37.39,136.9,true,false,false,false],
+  ['北陸信越','石川県輪島市（門前）','44','09',37.39,136.9,true,false,false,false],
+  ['北陸信越','富山県朝日町','44','10',36.91,137.57,true,false,false,false],
+  ['北陸信越','富山県黒部市','44','12',36.7,136.8,true,false,false,false],
+  ['北陸信越','富山県滑川市','44','13',36.7,136.8,true,false,false,false],
+  ['北陸信越','富山県魚津市','44','11',36.7,136.8,true,false,true,true],
+  ['北陸信越','福井県越前町','51','06',35.91,136.06,true,false,false,false],
+  ['北陸信越','福井県福井市（茱崎）','51','07',35.91,136.04,true,false,true,true],
+  ['北陸信越','福井県福井市','44','22',36.7,136.8,true,false,true,true],
+  ['北陸信越','福井県坂井市（三国）','51','10',36.22,136.17,true,false,true,true],
+  ['北陸信越','福井県高浜町','51','08',36.0,136.1,true,false,false,false],
+  ['北陸信越','福井県美浜町','51','11',36.0,136.1,true,false,false,false],
+  ['近畿','京都府京丹後市（網野）','51','01',36.0,136.1,true,false,true,true],
+  ['近畿','京都府京丹後市（久美浜）','51','02',36.0,136.1,true,false,true,true],
+  ['近畿','京都府京丹後市（中浜）','51','05',36.0,136.1,true,false,false,false],
+  ['近畿','京都府京丹後市（間人）','51','04',36.0,136.1,true,false,true,true],
+  ['近畿','兵庫県新温泉町（居組港）','60','06',35.6,134.5,true,false,true,true],
+  ['近畿','兵庫県香美町','60','03',35.61,134.78,true,false,true,true],
+  ['近畿','兵庫県豊岡市（津居山）','60','04',35.6,134.6,true,false,true,true],
+  ['近畿','兵庫県淡路島（西海岸）','60','02',35.6,134.6,true,false,true,true],
+  ['近畿','兵庫県淡路島（南海岸）','60','05',35.6,134.6,true,false,true,true],
+  ['近畿','和歌山県印南町','52','01',33.75,135.67,true,false,false,false],
+  ['近畿','和歌山県串本町','52','02',33.48,135.78,true,false,true,true],
+  ['近畿','和歌山県御坊市','52','03',33.6,135.6,true,false,false,false],
+  ['近畿','和歌山県すさみ町','52','04',33.6,135.6,true,false,false,false],
+  ['近畿','和歌山県田辺市','52','05',33.6,135.6,true,false,true,true],
+  ['近畿','和歌山県由良町','52','06',33.6,135.6,true,false,false,false],
+  ['四国','香川県東かがわ市','80','01',34.25,134.4,true,false,false,false],
+  ['四国','徳島県阿南市','80','02',33.92,134.65,true,false,false,false],
+  ['四国','徳島県海陽町','80','03',33.73,134.34,true,false,false,false],
+  ['四国','徳島県徳島市','80','04',34.07,134.55,true,false,true,true],
+  ['四国','徳島県鳴門市','80','05',34.2,134.0,true,false,false,false],
+  ['四国','徳島県美波町','80','06',34.2,134.0,true,false,false,false],
+  ['四国','徳島県牟岐町','80','07',34.2,134.0,true,false,false,false],
+  ['四国','愛媛県愛南町（城辺）','81','01',32.97,132.56,true,false,true,true],
+  ['四国','愛媛県伊方町（大久）','81','02',33.49,132.36,true,false,true,true],
+  ['四国','愛媛県伊方町（三机）','81','03',33.49,132.36,true,false,true,true],
+  ['四国','愛媛県大洲市（長浜）','81','04',33.5,132.6,true,false,true,true],
+  ['四国','愛媛県伊予市（双海）','81','05',33.5,132.6,true,false,false,false],
+  ['四国','愛媛県伊方町（三崎）','81','07',33.49,132.36,true,false,true,true],
+  ['四国','高知県安芸市','82','01',33.5,133.9,true,false,false,false],
+  ['四国','高知県大月町','82','02',33.4,133.3,true,false,false,false],
+  ['四国','高知県四万十町(窪川）','82','03',32.99,132.93,true,false,false,false],
+  ['四国','高知県高知市','82','04',33.56,133.53,true,false,true,true],
+  ['四国','高知県黒潮町（佐賀）','82','05',33.4,133.3,true,false,true,true],
+  ['四国','高知県宿毛市','82','06',32.94,132.73,true,false,true,true],
+  ['四国','高知県須崎市','82','07',33.38,133.28,true,false,true,true],
+  ['四国','高知県東洋町','82','08',33.4,133.3,true,false,true,true],
+  ['四国','高知県土佐市','82','09',33.5,133.43,true,false,true,true],
+  ['四国','高知県土佐清水市','82','10',32.78,132.95,true,false,true,true],
+  ['四国','高知県土佐清水市（下ノ加江）','82','10',32.78,132.95,true,false,false,false],
+  ['四国','高知県土佐清水市（三崎）','82','12',32.78,132.95,true,false,false,false],
+  ['四国','高知県中土佐町','82','13',33.4,133.3,true,false,false,false],
+  ['四国','高知県四万十市（中村）','82','14',32.99,132.93,true,false,true,true],
+  ['四国','高知県奈半利町','82','15',33.4,133.3,true,false,true,true],
+  ['四国','高知県室戸市','82','16',33.29,134.13,true,false,true,true],
+  ['四国','高知県室戸市（佐喜浜）','82','16',33.29,134.13,true,false,false,false],
+  ['四国','高知県香南市（夜須）','82','17',33.4,133.3,true,false,false,false],
+  ['四国','高知県香南市（吉川）','82','18',33.4,133.3,true,false,false,false],
+  ['中国','鳥取県琴浦町','72','01',35.52,133.72,true,false,true,true],
+  ['中国','鳥取県鳥取市','72','02',35.5,134.23,true,false,true,true],
+  ['中国','鳥取県湯梨浜町','72','03',35.5,133.5,true,false,true,true],
+  ['中国','鳥取県岩美町','72','09',35.55,134.37,true,false,false,false],
+  ['中国','鳥取県大山町','72','10',35.5,133.5,true,false,false,false],
+  ['中国','島根県出雲市','72','04',35.37,132.76,true,false,true,true],
+  ['中国','島根県隠岐の島町','72','05',36.2,133.33,true,false,true,true],
+  ['中国','島根県松江市島根町','72','06',35.47,133.06,true,false,true,true],
+  ['中国','島根県浜田市','72','07',34.9,132.07,true,false,true,true],
+  ['中国','島根県益田市','72','08',34.68,131.84,true,false,true,true],
+  ['中国','島根県大田市','72','11',35.19,132.5,true,false,false,false],
+  ['中国','島根県松江市鹿島町','72','12',35.47,133.06,true,false,false,false],
+  ['中国','島根県江津市','72','13',34.99,132.22,true,false,false,false],
+  ['中国','島根県大田市（仁摩）','72','14',35.19,132.5,true,false,false,false],
+  ['中国','島根県出雲市平田町','72','15',35.37,132.76,true,false,false,false],
+  ['中国','島根県浜田市（三隅）','72','16',34.9,132.07,true,false,false,false],
+  ['中国','島根県松江市美保関町','72','17',35.47,133.06,true,false,false,false],
+  ['中国','島根県大田市（温泉津）','72','18',35.19,132.5,true,false,false,false],
+  ['中国','山口県萩市須佐','91','02',34.65,131.76,true,false,true,true],
+  ['中国','山口県下関市豊浦町','91','03',34.02,130.97,true,false,true,true],
+  ['九州','福岡県宗像市（大島）','90','17',33.81,130.53,true,false,false,false],
+  ['九州','福岡県福津市（津屋崎）','90','18',33.7,130.4,true,false,true,true],
+  ['九州','福岡県豊前市','90','19',33.7,130.4,true,false,true,true],
+  ['九州','福岡県芦屋町','90','20',33.7,130.4,true,false,false,false],
+  ['九州','大分県国東市（安岐）','94','01',33.57,131.73,true,false,true,true],
+  ['九州','大分県宇佐市','94','02',33.0,131.5,true,false,true,true],
+  ['九州','大分県豊後高田市（香々地）','94','03',33.0,131.5,true,false,true,true],
+  ['九州','大分県佐伯市（蒲江）','94','04',32.96,131.9,true,false,true,true],
+  ['九州','大分県杵築市','94','05',33.0,131.5,true,false,true,true],
+  ['九州','大分県国東市（国東）','94','06',33.57,131.73,true,false,true,true],
+  ['九州','大分県国東市（国見）','94','07',33.57,131.73,true,false,true,true],
+  ['九州','大分県佐伯市','94','08',32.96,131.9,true,false,true,true],
+  ['九州','大分県佐伯市（鶴見）','94','09',32.96,131.9,true,false,false,false],
+  ['九州','大分県中津市','94','10',33.0,131.5,true,false,true,true],
+  ['九州','大分県豊後高田市','94','11',33.0,131.5,true,false,true,true],
+  ['九州','大分県豊後高田市（真玉）','94','12',33.0,131.5,true,false,true,true],
+  ['九州','大分県国東市（武蔵）','94','13',33.57,131.73,true,false,true,true],
+  ['九州','大分県佐伯市（米水津）','94','19',32.96,131.9,true,false,false,false],
+  ['九州','宮崎県門川町','94','14',32.47,131.65,true,false,false,false],
+  ['九州','宮崎県延岡市（北浦）','94','15',32.58,131.66,true,false,true,true],
+  ['九州','宮崎県延岡市','94','16',32.58,131.66,true,false,true,true],
+  ['九州','宮崎県日向市','94','17',32.42,131.62,true,false,true,true],
+  ['九州','宮崎県串間市','95','32',31.47,131.23,true,false,true,true],
+  ['九州','宮崎県新富町','95','33',30.5,130.5,true,false,true,true],
+  ['九州','宮崎県都農町','95','34',30.5,130.5,true,false,true,true],
+  ['九州','宮崎県日南市','95','35',30.5,130.5,true,false,true,true],
+  ['九州','宮崎県宮崎市','95','36',31.91,131.42,true,false,true,true],
+  ['九州','長崎県壱岐島','90','02',33.7,130.4,true,false,true,true],
+  ['九州','長崎県対馬市（厳原町東部）','90','05',34.21,129.29,true,false,true,true],
+  ['九州','長崎県対馬市（厳原町西部）','90','07',34.21,129.29,true,false,true,true],
+  ['九州','長崎県対馬市（上県）','90','10',34.21,129.29,true,false,true,true],
+  ['九州','長崎県対馬市（上対馬）','90','11',34.21,129.29,true,false,true,true],
+  ['九州','長崎県対馬市（峰町東部）','90','15',34.21,129.29,true,false,true,true],
+  ['九州','長崎県新上五島町(東岸)','92','01',32.98,129.08,true,false,true,true],
+  ['九州','長崎県小値賀町・佐世保市（宇久）','92','03',32.8,129.5,true,false,true,true],
+  ['九州','長崎県新上五島町(西岸)','92','04',32.98,129.08,true,false,true,true],
+  ['九州','長崎県五島市(北岸)','92','05',32.7,128.84,true,false,true,true],
+  ['九州','長崎県新上五島町(北岸)','92','06',32.98,129.08,true,false,true,true],
+  ['九州','長崎県五島市(西岸)','92','08',32.7,128.84,true,false,true,true],
+  ['九州','長崎県五島市(南東岸)','92','09',32.7,128.84,true,false,true,true],
+  ['九州','長崎県長崎市（橘湾）','92','11',32.8,129.5,true,false,true,true],
+  ['九州','長崎県五島市（福江）','92','15',32.7,128.84,true,false,true,true],
+  ['九州','長崎県対馬市（峰町西部）','92','16',34.4,129.28,true,false,true,true],
+  ['九州','長崎県五島市(北西岸）','92','17',32.7,128.84,true,false,true,true],
+  ['九州','長崎県雲仙市（南串山）','92','18',32.8,129.5,true,false,true,true],
+  ['九州','熊本県天草市','93','01',32.46,130.1,true,false,true,true],
+  ['九州','鹿児島県出水市','95','01',32.09,130.36,true,false,true,true],
+  ['九州','鹿児島県肝付町','95','02',30.5,130.5,true,false,true,true],
+  ['九州','鹿児島県肝付町（船間）','95','03',30.5,130.5,true,false,true,true],
+  ['九州','鹿児島県南九州市（頴娃）','95','04',31.17,130.45,true,false,true,true],
+  ['九州','鹿児島県奄美市（笠利）','95','05',28.44,129.71,true,false,true,true],
+  ['九州','鹿児島県南さつま市（加世田）','95','06',31.4,130.31,true,false,true,true],
+  ['九州','鹿児島県屋久島町（口永良部島）','95','07',30.5,130.5,true,false,true,true],
+  ['九州','鹿児島県屋久島町（上屋久永田港）','95','08',30.5,130.5,true,false,true,true],
+  ['九州','鹿児島県屋久島町（宮之浦港）','95','09',30.5,130.5,true,false,true,true],
+  ['九州','鹿児島県喜界町','95','10',28.32,129.93,true,false,true,true],
+  ['九州','鹿児島県いちき串木野市','95','11',30.5,130.5,true,false,true,true],
+  ['九州','鹿児島県南大隅町（佐多）','95','12',30.5,130.5,true,false,true,true],
+  ['九州','鹿児島県薩摩川内市（下甑）','95','13',31.83,130.3,true,false,true,true],
+  ['九州','鹿児島県奄美市（住用）','95','14',28.26,129.41,true,false,true,true],
+  ['九州','鹿児島県徳之島町','95','15',30.5,130.5,true,false,true,true],
+  ['九州','鹿児島県中種子町（増田港）','95','16',30.5,130.5,true,false,true,true],
+  ['九州','鹿児島県奄美市（名瀬港）','95','17',28.37,129.49,true,false,true,true],
+  ['九州','鹿児島県奄美市（小湊港）','95','18',28.4,129.59,true,false,true,true],
+  ['九州','鹿児島県西之表市','95','19',30.5,130.5,true,false,true,true],
+  ['九州','鹿児島県西之表市（田之脇）','95','20',30.5,130.5,true,false,true,true],
+  ['九州','鹿児島県南さつま市（坊津）','95','21',31.4,130.31,true,false,true,true],
+  ['九州','鹿児島県枕崎市','95','22',31.27,130.3,true,false,true,true],
+  ['九州','鹿児島県三島村（硫黄島、竹島）','95','23',30.5,130.5,true,false,true,true],
+  ['九州','鹿児島県三島村（黒島）','95','24',30.5,130.5,true,false,true,true],
+  ['九州','鹿児島県南種子町（島間港）','95','25',30.5,130.5,true,false,true,true],
+  ['九州','鹿児島県南種子町（竹崎港）','95','26',30.5,130.5,true,false,true,true],
+  ['九州','鹿児島県屋久島町（安房港）','95','27',30.5,130.5,true,false,true,true],
+  ['九州','鹿児島県屋久島町（湯泊港）','95','28',30.5,130.5,true,false,true,true],
+  ['九州','鹿児島県大和村','95','29',28.33,129.32,true,false,true,true],
+  ['九州','鹿児島県与論町','95','30',30.5,130.5,true,false,true,true],
+  ['九州','鹿児島県和泊町','95','31',30.5,130.5,true,false,true,true],
+  ['九州','鹿児島県十島村（中之島）','95','80',30.5,130.5,true,false,true,true],
+  ['九州','鹿児島県十島村（諏訪之瀬島）','95','81',30.5,130.5,true,false,true,true],
+  ['九州','鹿児島県十島村（悪石島）','95','82',30.5,130.5,true,false,true,true],
+  ['九州','鹿児島県十島村（宝島）','95','83',30.5,130.5,true,false,true,true],
+  ['沖縄','沖縄県粟国村','96','01',26.59,127.33,true,false,true,true],
+  ['沖縄','沖縄県石垣市（伊原間）','96','02',24.34,124.16,true,false,true,true],
+  ['沖縄','沖縄県糸満市','96','07',26.3,127.7,true,false,true,true],
+  ['沖縄','沖縄県伊是名村','96','08',26.3,127.7,true,false,true,true],
+  ['沖縄','沖縄県大宜味村','96','09',26.7,128.12,true,false,true,true],
+  ['沖縄','沖縄県恩納村','96','10',26.5,127.87,true,false,true,true],
+  ['沖縄','沖縄県嘉手納町','96','12',26.3,127.7,true,false,true,true],
+  ['沖縄','沖縄県八重瀬町（具志頭）','96','13',26.3,127.7,true,false,true,true],
+  ['沖縄','沖縄県久米島町（具志川）','96','14',26.34,126.79,true,false,true,true],
+  ['沖縄','沖縄県国頭村','96','15',26.3,127.7,true,false,true,true],
+  ['沖縄','沖縄県国頭村（宜名真）','96','16',26.3,127.7,true,false,true,true],
+  ['沖縄','沖縄県国頭村（奥）','96','17',26.3,127.7,true,false,true,true],
+  ['沖縄','沖縄県国頭村（安田）','96','18',26.3,127.7,true,false,true,true],
+  ['沖縄','沖縄県竹富町（波照間）','96','20',24.32,124.16,true,false,true,true],
+  ['沖縄','沖縄県多良間村','96','21',26.3,127.7,true,false,true,true],
+  ['沖縄','沖縄県渡名喜村','96','23',26.3,127.7,true,false,true,true],
+  ['沖縄','沖縄県那覇市','96','24',26.21,127.68,true,false,true,true],
+  ['沖縄','沖縄県名護市','96','25',26.59,128.0,true,false,true,true],
+  ['沖縄','沖縄県名護市（辺野古）','96','26',26.59,128.0,true,false,true,true],
+  ['沖縄','沖縄県東村','96','27',26.62,128.15,true,false,true,true],
+  ['沖縄','沖縄県南大東村','96','28',26.62,128.15,true,false,true,true],
+  ['沖縄','沖縄県読谷村','96','29',26.4,127.75,true,false,true,true],
+  ['沖縄','沖縄県与那国町','96','30',26.3,127.7,true,false,true,true],
+  ['沖縄','沖縄県本部町','96','31',26.66,127.89,true,false,true,true],
+  ['沖縄','沖縄県宮古島市（平良）','96','32',24.81,125.28,true,false,true,true],
+  ['沖縄','沖縄県座間味村','96','33',26.23,127.3,true,false,true,true],
+  ['沖縄','沖縄県石垣市（伊野田）','96','03',24.34,124.16,true,false,true,true],
+  ['沖縄','沖縄県石垣市（平久保）','96','05',24.34,124.16,true,false,true,true],
+  ['沖縄','沖縄県恩納村（恩納）','96','11',26.5,127.87,true,false,true,true],
+];
+
+var mfType='all', mfRegion='all';
+var mapInited=false;
+var SVG_W=900, SVG_H=900;
+
+/* 経度・緯度 → SVG座標変換（メルカトル投影、lon:122-148, lat:24-46） */
+function lon2x(lon){ return (lon - 122) / (148 - 122) * SVG_W; }
+function lat2y(lat){
+  var top = Math.log(Math.tan(Math.PI/4 + Math.PI/180*46/2));
+  var bot = Math.log(Math.tan(Math.PI/4 + Math.PI/180*24/2));
+  var m   = Math.log(Math.tan(Math.PI/4 + Math.PI/180*lat/2));
+  return (1 - (m - bot)/(top - bot)) * SVG_H;
+}
+
+function dotColor(g){
+  if(mfType!=='kisen'){
+    if(g[8]||g[9]){ return (g[6]||g[7]) ? '#7b1fa2' : '#ff8f00'; }
+  }
+  if(g[0]==='平水') return '#00acc1';
+  return '#2196f3';
+}
+
+/* 日本地図SVGパス（メルカトル投影・正確な海岸線） */
+var JAPAN_PATHS = [
+  /* 北海道 */
+  'M657.7,23.7 L675.0,28.4 L681.9,23.7 L695.8,47.2 L706.2,70.5 L740.8,75.2 L771.9,93.6 L785.8,93.6 L796.2,102.8 L816.9,125.7 L796.2,139.3 L778.8,152.8 L761.5,166.3 L733.8,170.8 L709.6,170.8 L685.4,175.2 L668.1,193.1 L657.7,197.5 L640.4,197.5 L623.1,184.2 L619.6,148.3 L623.1,130.2 L630.0,116.5 L640.4,107.4 L643.8,93.6 L636.9,75.2 L640.4,56.6 L657.7,23.7 Z',
+  /* 本州 */
+  'M678.5,224.0 L685.4,206.3 L692.3,250.2 L695.8,284.8 L688.8,310.5 L685.4,319.0 L678.5,323.3 L675.0,344.4 L671.5,340.2 L657.7,394.6 L640.4,431.8 L654.2,452.2 L650.8,460.4 L623.1,476.6 L616.2,468.5 L609.2,464.4 L595.4,476.6 L581.5,480.6 L585.0,492.7 L591.9,496.7 L581.5,496.7 L564.2,492.7 L536.5,492.7 L529.6,496.7 L522.7,488.7 L512.3,492.7 L501.9,500.8 L491.5,516.8 L484.6,528.8 L477.7,540.7 L467.3,536.7 L456.9,520.8 L432.7,528.8 L446.5,520.8 L456.9,504.8 L446.5,496.7 L432.7,496.7 L415.4,504.8 L398.1,500.8 L380.8,504.8 L363.5,516.8 L346.2,516.8 L328.8,512.8 L318.5,508.8 L311.5,508.8 L308.1,524.8 L304.6,516.8 L318.5,500.8 L328.8,492.7 L335.8,480.6 L346.2,464.4 L363.5,460.4 L387.7,460.4 L432.7,460.4 L450.0,456.3 L477.7,456.3 L491.5,444.1 L501.9,431.8 L512.3,407.1 L519.2,398.8 L529.6,390.5 L536.5,378.0 L553.8,365.5 L571.2,357.1 L591.9,344.4 L602.3,336.0 L609.2,336.0 L609.2,284.8 L623.1,267.6 L630.0,250.2 L636.9,241.5 L643.8,224.0 L678.5,224.0 Z',
+  /* 紀伊半島 */
+  'M477.7,520.8 L460.4,540.7 L484.6,548.6 L491.5,528.8 L477.7,520.8 Z',
+  /* 四国 */
+  'M363.5,528.8 L377.3,540.7 L391.2,540.7 L405.0,544.7 L422.3,536.7 L436.2,532.7 L450.0,528.8 L439.6,512.8 L422.3,508.8 L405.0,508.8 L387.7,516.8 L370.4,524.8 L363.5,528.8 Z',
+  /* 九州 */
+  'M308.1,524.8 L318.5,528.8 L328.8,536.7 L342.7,532.7 L356.5,536.7 L363.5,552.6 L342.7,560.5 L321.9,615.3 L304.6,623.1 L283.8,619.2 L276.9,595.8 L263.1,580.2 L259.6,560.5 L266.5,540.7 L280.4,536.7 L290.8,524.8 L308.1,524.8 Z',
+  /* 薩摩半島 */
+  'M287.3,607.5 L294.2,634.7 L301.2,623.1 L294.2,607.5 L287.3,607.5 Z',
+  /* 大隅半島 */
+  'M297.7,615.3 L311.5,638.5 L318.5,619.2 L311.5,607.5 L297.7,615.3 Z',
+  /* 沖縄本島 */
+  'M197.3,793.7 L218.1,801.1 L218.1,819.6 L200.8,823.3 L190.4,815.9 L197.3,793.7 Z',
+  /* 対馬 */
+  'M249.2,492.7 L259.6,508.8 L259.6,520.8 L249.2,508.8 L249.2,492.7 Z',
+  /* 壱岐 */
+  'M266.5,528.8 L273.5,532.7 L270.0,540.7 L263.1,536.7 L266.5,528.8 Z',
+  /* 佐渡島 */
+  'M564.2,336.0 L571.2,348.7 L578.1,348.7 L578.1,336.0 L567.7,331.8 L564.2,336.0 Z',
+  /* 淡路島 */
+  'M446.5,496.7 L453.5,508.8 L446.5,512.8 L439.6,504.8 L446.5,496.7 Z',
+  /* 隠岐 */
+  'M380.8,435.9 L394.6,435.9 L394.6,427.7 L380.8,427.7 L380.8,435.9 Z',
+  /* 五島列島 */
+  'M218.1,568.3 L228.5,572.2 L228.5,580.2 L218.1,576.2 L218.1,568.3 Z',
+];
+
+function initMap(){
+  if(mapInited) return;
+  mapInited=true;
+  /* Leaflet CSS/JS を動的ロード。成功→タイル地図、失敗→SVGにフォールバック */
+  function tryLeaflet(cb){
+    if(window.L){cb(true);return;}
+    var css=document.createElement('link');
+    css.rel='stylesheet';
+    css.href='https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css';
+    document.head.appendChild(css);
+    var s=document.createElement('script');
+    s.src='https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js';
+    s.onload=function(){cb(true);};
+    s.onerror=function(){cb(false);};
+    document.head.appendChild(s);
+  }
+  tryLeaflet(function(ok){
+    if(ok){startLeaflet();}else{startSVG();}
+  });
+}
+
+var lMap=null,lMarkers=[];
+function startLeaflet(){
+  document.getElementById('leafletMap').style.display='';
+  document.getElementById('svgMapWrap').style.display='none';
+  lMap=L.map('leafletMap',{center:[36.5,136.5],zoom:5});
+  /* 国土地理院白地図 */
+  var gsi=L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/blank/{z}/{x}/{y}.png',{
+    attribution:'<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">国土地理院</a>',
+    maxZoom:18,minZoom:3});
+  /* バックアップ:OSM */
+  var osm=L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom:18,minZoom:3});
+  gsi.addTo(lMap);
+  var gsiOk=false;
+  gsi.on('tileload',function(){gsiOk=true;});
+  setTimeout(function(){if(!gsiOk){lMap.removeLayer(gsi);osm.addTo(lMap);}},4000);
+  buildLeafletDots();
+}
+function buildLeafletDots(){
+  if(!lMap) return;
+  lMarkers.forEach(function(m){lMap.removeLayer(m);}); lMarkers=[];
+  GEO.forEach(function(g){
+    var typeOk=mfType==='all'||(mfType==='kisen'&&(g[6]||g[7]))||(mfType==='hansen'&&(g[8]||g[9]));
+    var regionOk=mfRegion==='all'||mfRegion===g[0];
+    if(!typeOk||!regionOk) return;
+    var color=dotColor(g);
+    var icon=L.divIcon({className:'',
+      html:'<div style="width:12px;height:12px;border-radius:50%;background:'+color
+        +';border:2.5px solid rgba(255,255,255,0.85);box-shadow:0 1px 5px rgba(0,0,0,0.4)"></div>',
+      iconSize:[12,12],iconAnchor:[6,6]});
+    var m=L.marker([g[4],g[5]],{icon:icon});
+    var key=g[2]+'-'+g[3];
+    m.bindPopup(
+      '<div style="font-family:Noto Sans JP,sans-serif;min-width:160px">'
+      +'<div style="font-weight:700;font-size:13px;margin-bottom:3px;color:#fff">'+g[1]+'</div>'
+      +'<div style="font-family:DM Mono,monospace;font-size:10px;color:#7a94b8;margin-bottom:8px">'
+      +'GG='+g[2]+'  NN='+g[3]+'  '+g[0]+'</div>'
+      +'<button onclick="openMapPanel(&quot;'+key+'&quot;)" style="width:100%;padding:6px;background:#2196f3;'
+      +'color:#fff;border:none;border-radius:7px;font-size:12px;cursor:pointer;">PDF一覧を開く →</button></div>',
+      {maxWidth:220});
+    m.addTo(lMap); lMarkers.push(m);
+  });
+}
+function startSVG(){
+  document.getElementById('svgMapWrap').style.display='';
+  document.getElementById('leafletMap').style.display='none';
+  var wrap=document.getElementById('svgMapWrap');
+  var ns='http://www.w3.org/2000/svg';
+  var svg=document.createElementNS(ns,'svg');
+  var vb={x:-20,y:-20,w:940,h:940};
+  svg.setAttribute('viewBox',vb.x+' '+vb.y+' '+vb.w+' '+vb.h);
+  svg.setAttribute('preserveAspectRatio','xMidYMid meet');
+  svg.style.cssText='position:absolute;top:0;left:0;width:100%;height:100%';
+  var bg=document.createElementNS(ns,'rect');
+  bg.setAttribute('width',SVG_W);bg.setAttribute('height',SVG_H);
+  bg.setAttribute('fill','#0d2035');svg.appendChild(bg);
+  JAPAN_PATHS.forEach(function(d){
+    var p=document.createElementNS(ns,'path');
+    p.setAttribute('d',d);p.setAttribute('fill','#2a3d2e');
+    p.setAttribute('stroke','#4a6a50');p.setAttribute('stroke-width','1');
+    svg.appendChild(p);
+  });
+  var dg=document.createElementNS(ns,'g');dg.id='dotGroup';svg.appendChild(dg);
+  var tt=document.createElement('div');tt.id='mapTooltip';
+  tt.style.cssText='position:absolute;display:none;background:#1a2535;color:#dde6f5;'
+    +'border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:7px 11px;'
+    +'font-size:12px;pointer-events:none;z-index:100;max-width:200px;line-height:1.6';
+  wrap.appendChild(tt);wrap.appendChild(svg);
+  var drag={on:false,sx:0,sy:0,ox:0,oy:0};
+  wrap.addEventListener('mousedown',function(e){
+    drag.on=true;drag.sx=e.clientX;drag.sy=e.clientY;
+    drag.ox=vb.x;drag.oy=vb.y;wrap.style.cursor='grabbing';
+  });
+  window.addEventListener('mousemove',function(e){
+    if(!drag.on) return;
+    var r=wrap.getBoundingClientRect();
+    vb.x=drag.ox-(e.clientX-drag.sx)*vb.w/r.width;
+    vb.y=drag.oy-(e.clientY-drag.sy)*vb.h/r.height;
+    svg.setAttribute('viewBox',vb.x+' '+vb.y+' '+vb.w+' '+vb.h);
+  });
+  window.addEventListener('mouseup',function(){drag.on=false;wrap.style.cursor='grab';});
+  wrap.addEventListener('wheel',function(e){
+    e.preventDefault();
+    var r=wrap.getBoundingClientRect();
+    var mx=(e.clientX-r.left)/r.width,my=(e.clientY-r.top)/r.height;
+    var f=e.deltaY>0?1.15:0.87;
+    var nw=Math.min(Math.max(vb.w*f,150),SVG_W*2);
+    var nh=Math.min(Math.max(vb.h*f,150),SVG_H*2);
+    vb.x+=mx*(vb.w-nw);vb.y+=my*(vb.h-nh);vb.w=nw;vb.h=nh;
+    svg.setAttribute('viewBox',vb.x+' '+vb.y+' '+vb.w+' '+vb.h);
+  },{passive:false});
+  buildMapDots(svg,tt);
+}
+
+function buildMapDots(svg,ttDiv){
+  var ns='http://www.w3.org/2000/svg';
+  var g=document.getElementById('dotGroup');
+  while(g.firstChild) g.removeChild(g.firstChild);
+
+  GEO.forEach(function(geo){
+    var typeOk=mfType==='all'||(mfType==='kisen'&&(geo[6]||geo[7]))||(mfType==='hansen'&&(geo[8]||geo[9]));
+    var regionOk=mfRegion==='all'||mfRegion===geo[0];
+    if(!typeOk||!regionOk) return;
+
+    var cx=lon2x(geo[5]), cy=lat2y(geo[4]);
+    var color=dotColor(geo);
+
+    /* 外リング */
+    var ring=document.createElementNS(ns,'circle');
+    ring.setAttribute('cx',cx); ring.setAttribute('cy',cy);
+    ring.setAttribute('r','7');
+    ring.setAttribute('fill','rgba(255,255,255,0.15)');
+    ring.setAttribute('stroke',color); ring.setAttribute('stroke-width','1');
+    g.appendChild(ring);
+
+    /* 内ドット */
+    var dot=document.createElementNS(ns,'circle');
+    dot.setAttribute('cx',cx); dot.setAttribute('cy',cy);
+    dot.setAttribute('r','4.5');
+    dot.setAttribute('fill',color);
+    dot.setAttribute('stroke','rgba(255,255,255,0.8)');
+    dot.setAttribute('stroke-width','1.5');
+    dot.style.cursor='pointer';
+    dot.setAttribute('data-key',geo[2]+'-'+geo[3]);
+
+    dot.addEventListener('mouseenter',function(e){
+      dot.setAttribute('r','7');
+      ring.setAttribute('r','10');
+      ttDiv.innerHTML='<strong style="color:#fff;display:block;margin-bottom:2px">'+geo[1]+'</strong>'
+        +'<span style="font-family:DM Mono,monospace;font-size:10px;color:#7a94b8">GG='+geo[2]+'  NN='+geo[3]+'</span>';
+      ttDiv.style.display='block';
+    });
+    dot.addEventListener('mousemove',function(e){
+      var rect=document.getElementById('svgMapWrap').getBoundingClientRect();
+      var tx=e.clientX-rect.left+14, ty=e.clientY-rect.top-10;
+      if(tx+210>rect.width) tx=e.clientX-rect.left-220;
+      ttDiv.style.left=tx+'px'; ttDiv.style.top=ty+'px';
+    });
+    dot.addEventListener('mouseleave',function(){
+      dot.setAttribute('r','4.5'); ring.setAttribute('r','7');
+      ttDiv.style.display='none';
+    });
+    dot.addEventListener('click',function(e){
+      e.stopPropagation();
+      ttDiv.style.display='none';
+      openMapPanel(geo[2]+'-'+geo[3]);
+    });
+    g.appendChild(dot);
+  });
+}
+
+window.openMapPanel=function(key){
+  var g=GEO.find(function(x){return x[2]+'-'+x[3]===key});
+  if(!g) return;
+  document.getElementById('mpTitle').textContent=g[1];
+  document.getElementById('mpGg').textContent='グループ '+g[2]+'　区域番号 '+g[3]+'　（'+g[0]+'）';
+  var html='';
+  if(g[6]||g[7]){
+    html+='<div class="map-section">汽船（速力別）</div>';
+    [['005','5ノット'],['010','10ノット'],['015','15ノット'],['020','20ノット'],['025','25ノット'],['030','30ノット']].forEach(function(s){
+      if(g[6]) html+='<a class="pdf-row" href="'+B+'01'+g[2]+g[3]+s[0]+'.pdf" target="_blank"><span class="pdf-row-lbl">5海里超 '+s[1]+'</span><span class="pdf-row-arr">↗</span></a>';
+      if(g[7]) html+='<a class="pdf-row" href="'+B+'02'+g[2]+g[3]+s[0]+'.pdf" target="_blank"><span class="pdf-row-lbl">5海里以内 '+s[1]+'</span><span class="pdf-row-arr">↗</span></a>';
+    });
+  }
+  if(g[8]||g[9]){
+    html+='<div class="map-section">帆船</div>';
+    if(g[8]) html+='<a class="pdf-row" href="'+B+'04'+g[2]+g[3]+'099.pdf" target="_blank"><span class="pdf-row-lbl">帆船 12海里以内</span><span class="pdf-row-arr">↗</span></a>';
+    if(g[9]) html+='<a class="pdf-row" href="'+B+'05'+g[2]+g[3]+'099.pdf" target="_blank"><span class="pdf-row-lbl">帆船 5海里以内</span><span class="pdf-row-arr">↗</span></a>';
+  }
+  document.getElementById('mpContent').innerHTML=html;
+  document.getElementById('mapPanel').classList.add('open');
+  document.getElementById('mapOverlay').classList.add('show');
+};
+function closeMapPanel(){
+  document.getElementById('mapPanel').classList.remove('open');
+  document.getElementById('mapOverlay').classList.remove('show');
+}
+function setMF(key,val,btn){
+  if(key==='type'){
+    mfType=val;
+    document.querySelectorAll('.map-toolbar .fbtn').forEach(function(b){
+      if(b.getAttribute('onclick')&&b.getAttribute('onclick').indexOf("'type'")>=0) b.classList.remove('on');
+    });
+  } else {
+    mfRegion=val;
+    document.querySelectorAll('.map-toolbar .fbtn').forEach(function(b){
+      if(b.getAttribute('onclick')&&b.getAttribute('onclick').indexOf("'region'")>=0) b.classList.remove('on');
+    });
+  }
+  btn.classList.add('on');
+  if(!mapInited) return;
+  if(lMap){ buildLeafletDots(); return; }
+  var svg=document.querySelector('#svgMapWrap svg');
+  var tt=document.getElementById('mapTooltip');
+  if(svg&&tt) buildMapDots(svg,tt);
+}
+function switchView(v){
+  var container=document.getElementById('mainContainer');
+  var footer=document.getElementById('mainFooter');
+  var pm=document.getElementById('pageMap');
+  if(v==='map'){
+    container.style.display='none';
+    footer.style.display='none';
+    document.body.classList.add('map-active');
+    pm.classList.add('active');
+    initMap();
+    setTimeout(function(){if(lMap)lMap.invalidateSize();},100);
+  } else {
+    container.style.display='';
+    footer.style.display='';
+    document.body.classList.remove('map-active');
+    pm.classList.remove('active');
+  }
+  document.getElementById('btnTbl').classList.toggle('on',v==='table');
+  document.getElementById('btnMap').classList.toggle('on',v==='map');
+}
+
+build();
+</script>
+</body>
+</html>
